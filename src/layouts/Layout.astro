@@ -1,0 +1,150 @@
+---
+import '../app/index.css';
+import { routes as routeMeta, SITE_URL, DEFAULT_OG_IMAGE } from '../app/seo/routeMetadata';
+import { cityData } from '../app/data/roofingCityData';
+import HeaderIsland from '../islands/HeaderIsland';
+import StaticChrome from '../islands/StaticChrome';
+import ChatBotTrigger from '../app/components/ChatBotTrigger';
+
+interface Props {
+  path: string;
+  noindex?: boolean;
+}
+
+const { path, noindex = false } = Astro.props;
+
+const meta = routeMeta[path];
+const title = meta?.title ?? 'Ultra Roofing | Dallas-Fort Worth Roofing Contractor';
+const description =
+  meta?.description ??
+  'Ultra Roofing is a licensed, insured roofing contractor serving the Dallas-Fort Worth metroplex. Roof repair, replacement, storm damage, and commercial roofing.';
+const keywords = meta?.keywords;
+const canonical = meta?.canonicalUrl ?? `${SITE_URL}${path === '/' ? '' : path}`;
+const ogTitle = meta?.ogTitle ?? title;
+const ogDescription = meta?.ogDescription ?? description;
+const ogImage = meta?.ogImage ?? DEFAULT_OG_IMAGE;
+const robots = noindex || meta?.noindex ? 'noindex, nofollow' : 'index, follow';
+
+// FAQPage schema for /roofing/<city> pages, generated from the same
+// cityData that renders the visible FAQ section.
+let faqSchema: object | null = null;
+if (meta?.schemaType === 'faq' && path.startsWith('/roofing/')) {
+  const city = cityData[path.replace('/roofing/', '')];
+  if (city?.faqs?.length) {
+    faqSchema = {
+      '@context': 'https://schema.org',
+      '@type': 'FAQPage',
+      mainEntity: city.faqs.map((f) => ({
+        '@type': 'Question',
+        name: f.q,
+        acceptedAnswer: { '@type': 'Answer', text: f.a },
+      })),
+    };
+  }
+}
+
+const organizationSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'RoofingContractor',
+  '@id': 'https://ultraroofingtx.net/#business',
+  name: 'Ultra Roofing LLC',
+  image: 'https://ultraroofingtx.net/ULTRA%20ROOFING%20logo%20(1).png',
+  logo: 'https://ultraroofingtx.net/ULTRA%20ROOFING%20transparent%20logo.png',
+  url: 'https://ultraroofingtx.net',
+  telephone: '+18333567233',
+  email: 'office@ultraroofingtx.com',
+  priceRange: '$$',
+  description:
+    'Ultra Roofing is a licensed, insured, family-owned roofing contractor serving the Dallas–Fort Worth metroplex. Expert roof repair, replacement, hail damage, and commercial roofing.',
+  address: {
+    '@type': 'PostalAddress',
+    streetAddress: '355 Graben Ln',
+    addressLocality: 'Rhome',
+    addressRegion: 'TX',
+    postalCode: '76078',
+    addressCountry: 'US',
+  },
+  geo: { '@type': 'GeoCoordinates', latitude: '33.0542', longitude: '-97.4714' },
+  areaServed: [
+    'Dallas', 'Fort Worth', 'Arlington', 'Plano', 'Irving', 'Frisco', 'McKinney',
+    'Denton', 'Lewisville', 'Flower Mound', 'Grapevine', 'Carrollton', 'Richardson',
+    'Garland', 'Mesquite', 'Allen', 'The Colony', 'Coppell', 'Southlake', 'Keller',
+    'Rockwall', 'Mansfield', 'Weatherford', 'Waxahachie', 'Burleson', 'Prosper', 'Wylie',
+  ].map((name) => ({ '@type': 'City', name })),
+  openingHoursSpecification: {
+    '@type': 'OpeningHoursSpecification',
+    dayOfWeek: ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday'],
+    opens: '00:00',
+    closes: '23:59',
+  },
+  sameAs: [
+    'https://www.facebook.com/profile.php?id=61560269641430',
+    'https://www.instagram.com/ultraroofing_tx',
+  ],
+  aggregateRating: { '@type': 'AggregateRating', ratingValue: '5', reviewCount: '100' },
+};
+---
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+
+    <title>{title}</title>
+    <meta name="description" content={description} />
+    {keywords && <meta name="keywords" content={keywords} />}
+    <meta name="robots" content={robots} />
+    <link rel="canonical" href={canonical} />
+
+    <meta property="og:title" content={ogTitle} />
+    <meta property="og:description" content={ogDescription} />
+    <meta property="og:type" content="website" />
+    <meta property="og:locale" content="en_US" />
+    <meta property="og:site_name" content="Ultra Roofing" />
+    <meta property="og:url" content={canonical} />
+    <meta property="og:image" content={ogImage} />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content={ogTitle} />
+    <meta name="twitter:description" content={ogDescription} />
+    <meta name="twitter:image" content={ogImage} />
+
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-B71GM417TC"></script>
+    <script is:inline>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'G-B71GM417TC');
+    </script>
+
+    <link rel="icon" type="image/png" sizes="32x32" href="/ULTRA%20ROOFING%20logo%20(1).png" />
+    <link rel="icon" type="image/png" sizes="16x16" href="/ULTRA%20ROOFING%20logo%20(1).png" />
+    <link rel="apple-touch-icon" sizes="180x180" href="/ULTRA%20ROOFING%20logo%20(1).png" />
+    <meta name="msapplication-TileImage" content="/ULTRA%20ROOFING%20logo%20(1).png" />
+
+    <link rel="preconnect" href="https://images.pexels.com" crossorigin />
+    <link rel="dns-prefetch" href="https://images.pexels.com" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link rel="preload" href="/ULTRA%20ROOFING%20transparent%20logo.png" as="image" type="image/png" />
+
+    <meta name="geo.region" content="US-TX" />
+    <meta name="geo.placename" content="Rhome, Dallas-Fort Worth" />
+    <meta name="geo.position" content="33.0542;-97.4714" />
+    <meta name="ICBM" content="33.0542, -97.4714" />
+
+    <script type="application/ld+json" set:html={JSON.stringify(organizationSchema)} />
+    {faqSchema && <script type="application/ld+json" set:html={JSON.stringify(faqSchema)} />}
+  </head>
+  <body>
+    <div class="min-h-screen bg-white flex flex-col">
+      <HeaderIsland client:load pathname={path} />
+      <main class="flex-grow pb-16 lg:pb-0">
+        <slot />
+      </main>
+      <StaticChrome pathname={path} />
+      <ChatBotTrigger client:load />
+    </div>
+  </body>
+</html>

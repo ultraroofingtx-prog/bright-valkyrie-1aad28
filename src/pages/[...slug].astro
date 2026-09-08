@@ -1,0 +1,19 @@
+---
+import Layout from '../layouts/Layout.astro';
+import StaticPage from '../islands/StaticPage';
+import PageIsland from '../islands/PageIsland';
+import { routeEntries } from '../registry/manifest';
+
+export function getStaticPaths() {
+  return routeEntries.map((entry) => ({
+    params: { slug: entry.path === '/' ? undefined : entry.path.slice(1) },
+    props: { path: entry.path, hydrate: !!entry.hydrate },
+  }));
+}
+
+const { path, hydrate } = Astro.props;
+---
+
+<Layout path={path}>
+  {hydrate ? <PageIsland client:load route={path} /> : <StaticPage route={path} />}
+</Layout>
