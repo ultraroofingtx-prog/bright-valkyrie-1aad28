@@ -1,6 +1,7 @@
 import { Link } from 'react-router-dom';
 import { ArrowLeft } from 'lucide-react';
 import SEO from '../../components/SEO';
+import SchemaMarkup from '../../components/SchemaMarkup';
 
 export default function SignsReplaceRoof() {
   return (
@@ -9,6 +10,17 @@ export default function SignsReplaceRoof() {
         title="5 Signs You Need a New Roof | Roof Replacement DFW | Ultra Roofing"
         description="Curling shingles, persistent leaks, or a roof over 20 years old? Learn the 5 warning signs that mean it's time for a roof replacement in Dallas–Fort Worth — and get a free inspection from Ultra Roofing."
         keywords="signs need new roof DFW, roof replacement Dallas TX, when to replace roof North Texas, old roof damage signs, shingle damage Dallas, roof replacement Fort Worth, aging roof warning signs Texas, roof replacement cost DFW, roof lifespan Texas, need new roof Dallas"
+      />
+      <SchemaMarkup
+        type="blogPosting"
+        blogPosting={{
+          slug: 'signs-replace-roof-north-texas',
+          headline: '5 Signs It\'s Time to Replace Your Roof in North Texas',
+          description: 'Curling shingles, persistent leaks, or a roof over 20 years old? Learn the 5 warning signs that mean it\'s time for a roof replacement in Dallas–Fort Worth — and get a free inspection from Ultra Roofing.',
+          image: 'https://images.pexels.com/photos/280222/pexels-photo-280222.jpeg?auto=compress&cs=tinysrgb&w=1200',
+          datePublished: '2024-02-15T09:00:00-06:00',
+          author: 'Ultra Roofing Team',
+        }}
       />
 
       <article className="py-12 sm:py-16 lg:py-20 bg-white">
@@ -32,7 +44,7 @@ export default function SignsReplaceRoof() {
             5 Signs It's Time to Replace Your Roof in North Texas
           </h1>
 
-          <p className="text-gray-500 mb-8">Published February 15, 2024</p>
+          <p className="text-gray-500 mb-8">Published February 15, 2024 &middot; By Ultra Roofing Team</p>
 
           <div className="prose prose-lg max-w-none">
             <p className="text-lg text-gray-700 mb-6">

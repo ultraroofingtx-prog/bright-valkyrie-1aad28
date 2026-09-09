@@ -1,6 +1,7 @@
 import { Link } from 'react-router-dom';
 import { ArrowLeft } from 'lucide-react';
 import SEO from '../../components/SEO';
+import SchemaMarkup from '../../components/SchemaMarkup';
 
 export default function RoofMaintenanceSavesMoney() {
   return (
@@ -9,6 +10,17 @@ export default function RoofMaintenanceSavesMoney() {
         title="Spring Roof Maintenance Checklist for DFW Homeowners | Ultra Roofing"
         description="Spring is the best time to check for storm damage, clear debris, and prepare your roof for the Texas summer. A maintenance visit now can prevent thousands in repairs later. Ultra Roofing serves all DFW cities."
         keywords="spring roof maintenance checklist DFW, post-storm roof checkup Dallas, roof maintenance saves money Texas, seasonal roof inspection Fort Worth, prevent summer roof damage DFW, spring roof inspection near me, roof upkeep Texas, annual roof checkup Dallas"
+      />
+      <SchemaMarkup
+        type="blogPosting"
+        blogPosting={{
+          slug: 'why-roof-maintenance-saves-money',
+          headline: 'Why Roof Maintenance Saves You Thousands Over Time',
+          description: 'Spring is the best time to check for storm damage, clear debris, and prepare your roof for the Texas summer. A maintenance visit now can prevent thousands in repairs later. Ultra Roofing serves all DFW cities.',
+          image: 'https://images.pexels.com/photos/834892/pexels-photo-834892.jpeg?auto=compress&cs=tinysrgb&w=1200',
+          datePublished: '2024-02-28T09:00:00-06:00',
+          author: 'Ultra Roofing Team',
+        }}
       />
 
       <article className="py-12 sm:py-16 lg:py-20 bg-white">
@@ -32,7 +44,7 @@ export default function RoofMaintenanceSavesMoney() {
             Why Roof Maintenance Saves You Thousands Over Time
           </h1>
 
-          <p className="text-gray-500 mb-8">Published February 28, 2024</p>
+          <p className="text-gray-500 mb-8">Published February 28, 2024 &middot; By Ultra Roofing Team</p>
 
           <div className="prose prose-lg max-w-none">
             <p className="text-lg text-gray-700 mb-6">

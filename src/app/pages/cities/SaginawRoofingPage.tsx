@@ -1,9 +1,34 @@
 import { Link } from 'react-router-dom';
 import { Phone, CheckCircle, ArrowRight, MapPin } from 'lucide-react';
+import SchemaMarkup from '../../components/SchemaMarkup';
+
+const faqItems = [
+  {
+    "question": "My roof was hit by hail last season. Is it too late to file a claim?",
+    "answer": "Most Texas homeowner policies allow claims within one to two years of the damage date,\n                but check your specific policy. We can inspect your roof now, document existing damage,\n                and help you determine whether a claim makes sense."
+  },
+  {
+    "question": "What's the difference between Class 3 and Class 4 shingles?",
+    "answer": "Both are impact-rated, but Class 4 withstands a larger steel ball drop test. We install\n                IKO Dynasty Class 3 impact-resistant shingles as our standard upgrade \u2014 they offer strong\n                hail protection at a reasonable price point for most Saginaw homeowners."
+  },
+  {
+    "question": "Do you work on homes near Eagle Mountain Lake?",
+    "answer": "Yes. We serve the entire Saginaw area including properties near Eagle Mountain Lake.\n                Lakefront and near-lake homes can take extra wind exposure, which we account for in\n                our material and installation recommendations."
+  },
+  {
+    "question": "How do I know if I need a repair or a full replacement?",
+    "answer": "We start with a free inspection. If damage is limited to a small area and your roof\n                is relatively new, a repair is usually the right call. If damage is widespread or\n                your shingles are near end of life, a replacement is more cost-effective long term."
+  },
+  {
+    "question": "What commercial roofing do you offer in Saginaw?",
+    "answer": "For flat and low-slope commercial roofs we install TPO single-ply membrane, R-panel\n                metal, and rolled roofing. These systems work well for retail strips, warehouses,\n                and small office buildings common in the Saginaw area."
+  }
+];
 
 export default function SaginawRoofingPage() {
   return (
     <div className="bg-white">
+      <SchemaMarkup type="faq" faqItems={faqItems} />
       {/* Hero */}
       <section className="bg-[#1C2A39] text-white py-16 sm:py-20">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 text-center">
@@ -52,9 +77,6 @@ export default function SaginawRoofingPage() {
             three-tab shingles that have taken years of hail hits, while newer construction
             often uses architectural shingles that still need inspection after major storms.
           </p>
-          <p className="text-gray-700 mb-4">
-            We service Saginaw and the surrounding neighborhoods including:
-          </p>
           {/* [OWNER: fill in neighborhoods — e.g., Willow Creek, Blue Mound, near Eagle Mountain Lake, Park Place, etc.] */}
           <p className="text-gray-700 mb-4">
             Whether you need a quick repair on a few damaged shingles or a full tear-off and
@@ -63,7 +85,7 @@ export default function SaginawRoofingPage() {
             membrane and rolled roofing systems.
           </p>
           <p className="text-gray-700">
-            Saginaw's proximity to Eagle Mountain Lake means some homes face above-average wind'
+            Saginaw's proximity to Eagle Mountain Lake means some homes face above-average wind
             exposure. We factor local wind patterns into our installation methods, using enhanced
             nailing patterns and starter strips rated for high-wind zones when the property
             warrants it.
@@ -107,7 +129,7 @@ export default function SaginawRoofingPage() {
               </p>
             </div>
             <div>
-              <h3 className="font-semibold text-[#1C2A39] mb-2">What's the difference between Class 3 and Class 4 shingles?</h3>'
+              <h3 className="font-semibold text-[#1C2A39] mb-2">What's the difference between Class 3 and Class 4 shingles?</h3>
               <p className="text-gray-700">
                 Both are impact-rated, but Class 4 withstands a larger steel ball drop test. We install
                 IKO Dynasty Class 3 impact-resistant shingles as our standard upgrade — they offer strong

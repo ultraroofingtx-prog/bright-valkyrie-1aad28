@@ -1,9 +1,34 @@
 import { Link } from 'react-router-dom';
 import { Phone, CheckCircle, ArrowRight, MapPin } from 'lucide-react';
+import SchemaMarkup from '../../components/SchemaMarkup';
+
+const faqItems = [
+  {
+    "question": "Is metal roofing a good choice for properties in Rhome?",
+    "answer": "Yes. Many Rhome properties sit on open land with full wind and sun exposure. Standing\n                seam metal and R-panel metal handle high winds, shed hail better than standard shingles,\n                and last significantly longer with minimal maintenance."
+  },
+  {
+    "question": "Do you charge extra to come out to Rhome?",
+    "answer": "No. Our inspections are free with no trip charge for Rhome and the surrounding 287\n                corridor. We work in this area regularly and are set up to service rural and acreage\n                properties."
+  },
+  {
+    "question": "What shingles do you recommend for hail protection?",
+    "answer": "We install IKO Dynasty Class 3 impact-resistant shingles. They carry an impact rating\n                that can qualify you for insurance discounts and are designed to resist cracking from\n                hailstones common in North Texas storms."
+  },
+  {
+    "question": "Can you work on barns, shops, or outbuildings?",
+    "answer": "We can. R-panel metal and rolled roofing are common choices for barns, workshops, and\n                detached garages. We handle these alongside residential roofing projects and can often\n                do multiple structures in a single trip to save you time and scheduling hassle."
+  },
+  {
+    "question": "How do I know if my roof needs replacement or just repair?",
+    "answer": "We start with a free inspection and give you an honest assessment. If only a small\n                section is damaged and your roof is relatively new, a repair makes sense. If damage\n                is widespread or shingles are near the end of their lifespan, replacement is the\n                more cost-effective long-term option."
+  }
+];
 
 export default function RhomeRoofingPage() {
   return (
     <div className="bg-white">
+      <SchemaMarkup type="faq" faqItems={faqItems} />
       {/* Hero */}
       <section className="bg-[#1C2A39] text-white py-16 sm:py-20">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 text-center">
@@ -51,9 +76,6 @@ export default function RhomeRoofingPage() {
             are common. Many homes here have metal roofs or older shingle systems exposed to full
             sun and wind with no tree cover. That combination means storm damage can be more severe
             than in shielded suburban neighborhoods.
-          </p>
-          <p className="text-gray-700 mb-4">
-            We serve Rhome and the surrounding communities including:
           </p>
           {/* [OWNER: fill in nearby areas — e.g., Aurora, Boyd, Newark, along 287 corridor, Paradise] */}
           <p className="text-gray-700 mb-4">

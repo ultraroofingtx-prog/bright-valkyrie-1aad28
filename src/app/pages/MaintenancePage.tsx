@@ -1,5 +1,6 @@
 import { Phone, CheckCircle, Shield, DollarSign, TrendingUp, FileText, Calculator, ChevronDown } from 'lucide-react';
 import SEO from '../components/SEO';
+import SchemaMarkup from '../components/SchemaMarkup';
 import { useState } from 'react';
 import { Link } from 'react-router-dom';
 
@@ -58,6 +59,12 @@ export default function MaintenancePage() {
         description="Protect your roof year-round with Ultra Roofing's maintenance plans for DFW homeowners and businesses. Annual inspections, gutter cleaning, storm-readiness checks. Licensed & insured."
         keywords="roof maintenance plan DFW, annual roof inspection Dallas, roof maintenance Fort Worth, preventive roof care North Texas, gutter cleaning Dallas TX, roof tune-up DFW, commercial roof maintenance Dallas, residential roof inspection program, roof upkeep North Texas, storm-ready roof DFW"
       />
+      <SchemaMarkup
+        type="service"
+        serviceName="Roof Maintenance"
+        serviceDescription="Protect your roof year-round with Ultra Roofing's maintenance plans for DFW homeowners and businesses. Annual inspections, gutter cleaning, storm-readiness checks. Licensed & insured."
+      />
+      <SchemaMarkup type="faq" faqItems={faqs} />
 
       {/* Hero Section */}
       <section className="relative min-h-[500px] sm:min-h-[550px] md:h-[600px] flex items-center justify-center text-white">

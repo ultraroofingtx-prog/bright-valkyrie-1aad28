@@ -1,9 +1,34 @@
 import { Link } from 'react-router-dom';
 import { Phone, CheckCircle, ArrowRight, MapPin } from 'lucide-react';
+import SchemaMarkup from '../../components/SchemaMarkup';
+
+const faqItems = [
+  {
+    "question": "My home is in a newer Haslet subdivision. Does it still need inspection after storms?",
+    "answer": "Yes. Even roofs that are only a few years old can sustain hail damage that voids\n                the shingle warranty if left unaddressed. A free inspection after a major storm\n                catches problems early and protects your investment."
+  },
+  {
+    "question": "What roofing materials work best for the Haslet climate?",
+    "answer": "IKO Dynasty Class 3 impact-resistant shingles handle hail and sustained heat well.\n                Standing seam metal is another strong option \u2014 it sheds hail, withstands high winds,\n                and reflects summer heat. For flat commercial roofs, TPO single-ply membrane is our\n                standard recommendation."
+  },
+  {
+    "question": "Do you handle insurance paperwork?",
+    "answer": "We handle the documentation side \u2014 detailed photos, measurements, and a written\n                scope of work your insurance company needs. We can also meet your adjuster on-site\n                to walk through the damage together."
+  },
+  {
+    "question": "Can you roof a metal barn or shop building?",
+    "answer": "Absolutely. R-panel metal and rolled roofing are practical choices for barns, shops,\n                and detached buildings. We handle these projects regularly for Haslet property owners\n                with acreage."
+  },
+  {
+    "question": "How quickly can you start after I approve the estimate?",
+    "answer": "In most cases we can schedule your project within one to two weeks of approval.\n                After major storms when demand spikes, timelines may extend, but we communicate\n                clearly about scheduling from the start."
+  }
+];
 
 export default function HasletRoofingPage() {
   return (
     <div className="bg-white">
+      <SchemaMarkup type="faq" faqItems={faqItems} />
       {/* Hero */}
       <section className="bg-[#1C2A39] text-white py-16 sm:py-20">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 text-center">
@@ -51,9 +76,6 @@ export default function HasletRoofingPage() {
             established homes and rural properties. The area sits in the northern Tarrant County
             hail corridor — spring storms can deliver damaging hail without much warning, and
             the wide-open terrain offers little wind break for exposed rooflines.
-          </p>
-          <p className="text-gray-700 mb-4">
-            We work throughout Haslet and surrounding areas including:
           </p>
           {/* [OWNER: fill in nearby communities — e.g., Alliance area, north Fort Worth, Justin, Northlake, Trophy Club] */}
           <p className="text-gray-700 mb-4">

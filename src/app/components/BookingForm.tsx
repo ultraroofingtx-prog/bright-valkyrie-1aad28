@@ -20,7 +20,8 @@ export default function BookingForm({ onClose, isModal = false }: BookingFormPro
     phone: '',
     address: '',
     propertyType: 'residential',
-    message: ''
+    message: '',
+    smsConsent: false
   });
 
   const [addressComponents, setAddressComponents] = useState<AddressComponents>({
@@ -72,7 +73,8 @@ export default function BookingForm({ onClose, isModal = false }: BookingFormPro
           phone: '',
           address: '',
           propertyType: 'residential',
-          message: ''
+          message: '',
+          smsConsent: false
         });
         setAddressComponents({
           street: '',
@@ -92,9 +94,10 @@ export default function BookingForm({ onClose, isModal = false }: BookingFormPro
   };
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) => {
+    const { name, value, type } = e.target;
     setFormData({
       ...formData,
-      [e.target.name]: e.target.value
+      [name]: type === 'checkbox' ? (e.target as HTMLInputElement).checked : value
     });
   };
 
@@ -158,6 +161,24 @@ export default function BookingForm({ onClose, isModal = false }: BookingFormPro
             placeholder="(555) 555-5555"
           />
         </div>
+      </div>
+
+      <div className="flex items-start">
+        <input
+          type="checkbox"
+          name="smsConsent"
+          checked={formData.smsConsent}
+          onChange={handleChange}
+          required
+          className="mt-1 mr-3 h-4 w-4 flex-shrink-0"
+        />
+        <label className="text-sm text-gray-600 leading-relaxed">
+          I agree to receive text messages from Ultra Roofing LLC about my appointment, quote, or
+          service updates. Message frequency varies. Message and data rates may apply. Reply STOP
+          to opt out, HELP for help. View our{' '}
+          <a href="/privacy-policy" className="text-[#0096D7] underline">Privacy Policy</a> and{' '}
+          <a href="/sms-terms" className="text-[#0096D7] underline">SMS Terms</a>.
+        </label>
       </div>
 
       <div>

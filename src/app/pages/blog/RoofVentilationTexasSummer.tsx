@@ -1,6 +1,7 @@
 import { Link } from 'react-router-dom';
 import { ArrowLeft } from 'lucide-react';
 import SEO from '../../components/SEO';
+import SchemaMarkup from '../../components/SchemaMarkup';
 
 export default function RoofVentilationTexasSummer() {
   return (
@@ -9,6 +10,17 @@ export default function RoofVentilationTexasSummer() {
         title="Roof Ventilation for Texas Summer Heat | Lower Energy Bills | Ultra Roofing DFW"
         description="Proper roof ventilation is critical before the Texas summer. Learn how attic heat buildup destroys shingles, spikes energy costs, and how to fix it. Serving all DFW cities."
         keywords="roof ventilation Texas summer, attic ventilation DFW, reduce energy bills roof Dallas, attic heat damage shingles Fort Worth, roof ventilation upgrade Texas, soffit ridge vent DFW"
+      />
+      <SchemaMarkup
+        type="blogPosting"
+        blogPosting={{
+          slug: 'roof-ventilation-texas-summer',
+          headline: 'Why Roof Ventilation Matters Before a Texas Summer',
+          description: 'Proper roof ventilation is critical before the Texas summer. Learn how attic heat buildup destroys shingles, spikes energy costs, and how to fix it. Serving all DFW cities.',
+          image: 'https://images.pexels.com/photos/186980/pexels-photo-186980.jpeg?auto=compress&cs=tinysrgb&w=1200',
+          datePublished: '2024-05-20T09:00:00-05:00',
+          author: 'Ultra Roofing Team',
+        }}
       />
 
       <article className="py-12 sm:py-16 lg:py-20 bg-white">
@@ -32,7 +44,7 @@ export default function RoofVentilationTexasSummer() {
             Why Roof Ventilation Matters Before a Texas Summer
           </h1>
 
-          <p className="text-gray-500 mb-8">Published May 1, 2026</p>
+          <p className="text-gray-500 mb-8">Published May 20, 2024 &middot; By Ultra Roofing Team</p>
 
           <div className="prose prose-lg max-w-none">
             <p className="text-lg text-gray-700 mb-6">

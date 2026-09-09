@@ -1,6 +1,7 @@
 import { Link } from 'react-router-dom';
 import { ArrowLeft } from 'lucide-react';
 import SEO from '../../components/SEO';
+import SchemaMarkup from '../../components/SchemaMarkup';
 
 export default function MetalRoofingDFW() {
   return (
@@ -9,6 +10,17 @@ export default function MetalRoofingDFW() {
         title="Is Metal Roofing Worth It in DFW? Pros, Cons & Costs | Ultra Roofing"
         description="Considering a metal roof for your Dallas–Fort Worth home? Learn how metal roofing holds up against Texas hail, heat, and storms — and whether it's worth the cost."
         keywords="metal roofing DFW, metal roof vs shingles Texas, metal roof hail resistance Dallas, standing seam metal roof Fort Worth, metal roof cost DFW, metal roofing benefits Texas"
+      />
+      <SchemaMarkup
+        type="blogPosting"
+        blogPosting={{
+          slug: 'metal-roofing-dfw-pros-cons-cost',
+          headline: 'Is Metal Roofing Worth It in DFW? Pros, Cons, and Real Costs',
+          description: 'Considering a metal roof for your Dallas–Fort Worth home? Learn how metal roofing holds up against Texas hail, heat, and storms — and whether it\'s worth the cost.',
+          image: 'https://images.pexels.com/photos/280222/pexels-photo-280222.jpeg?auto=compress&cs=tinysrgb&w=1200',
+          datePublished: '2024-06-17T09:00:00-05:00',
+          author: 'Ultra Roofing Team',
+        }}
       />
 
       <article className="py-12 sm:py-16 lg:py-20 bg-white">
@@ -32,7 +44,7 @@ export default function MetalRoofingDFW() {
             Is Metal Roofing Worth It in DFW? Pros, Cons, and Real Costs
           </h1>
 
-          <p className="text-gray-500 mb-8">Published May 1, 2026</p>
+          <p className="text-gray-500 mb-8">Published June 17, 2024 &middot; By Ultra Roofing Team</p>
 
           <div className="prose prose-lg max-w-none">
             <p className="text-lg text-gray-700 mb-6">

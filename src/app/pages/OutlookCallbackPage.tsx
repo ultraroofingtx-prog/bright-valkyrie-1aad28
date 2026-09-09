@@ -2,16 +2,18 @@ import { useEffect, useState } from 'react';
 import { useNavigate, useLocation } from 'react-router-dom';
 import { CheckCircle, XCircle, Loader } from 'lucide-react';
 import { supabase } from '../lib/supabase';
+import { useAdminAuth } from '../hooks/useAdminAuth';
 
 export default function OutlookCallbackPage() {
+  const { session } = useAdminAuth();
   const [status, setStatus] = useState<'processing' | 'success' | 'error'>('processing');
   const [message, setMessage] = useState('Processing authorization...');
   const navigate = useNavigate();
   const location = useLocation();
 
   useEffect(() => {
-    handleCallback();
-  }, []);
+    if (session) handleCallback();
+  }, [session]);
 
   const handleCallback = async () => {
     try {
@@ -43,7 +45,9 @@ export default function OutlookCallbackPage() {
           method: 'POST',
           headers: {
             'Content-Type': 'application/json',
-            'Authorization': `Bearer ${import.meta.env.VITE_SUPABASE_ANON_KEY}`,
+            // Must be the logged-in admin's own session token, not the anon
+            // key - outlook-auth-callback checks this against admin_users.
+            'Authorization': `Bearer ${session?.access_token}`,
           },
           body: JSON.stringify({
             code,

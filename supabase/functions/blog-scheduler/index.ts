@@ -1,4 +1,6 @@
 import { createClient } from 'npm:@supabase/supabase-js@2';
+import { checkRateLimit, getClientIp, rateLimitResponse } from '../_shared/rateLimit.ts';
+import { requireAdmin } from '../_shared/requireAdmin.ts';
 
 const corsHeaders = {
   'Access-Control-Allow-Origin': '*',
@@ -15,6 +17,15 @@ Deno.serve(async (req: Request) => {
     const supabaseUrl = Deno.env.get('SUPABASE_URL')!;
     const supabaseKey = Deno.env.get('SUPABASE_SERVICE_ROLE_KEY')!;
     const supabase = createClient(supabaseUrl, supabaseKey);
+
+    const { allowed } = await checkRateLimit(supabaseUrl, supabaseKey, getClientIp(req), 'blog-scheduler');
+    if (!allowed) return rateLimitResponse(corsHeaders);
+
+    // Every action here reads or writes scheduled_blog_posts with the
+    // service-role key (bypassing RLS) - there's no public use case for
+    // this function, it's purely the admin blog-scheduler tool.
+    const admin = await requireAdmin(req, supabaseUrl, supabaseKey, corsHeaders);
+    if (!admin.ok) return admin.response;
 
     const url = new URL(req.url);
     const action = url.searchParams.get('action') || 'list';

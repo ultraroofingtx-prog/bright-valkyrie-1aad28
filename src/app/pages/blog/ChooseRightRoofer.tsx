@@ -1,6 +1,7 @@
 import { Link } from 'react-router-dom';
 import { ArrowLeft } from 'lucide-react';
 import SEO from '../../components/SEO';
+import SchemaMarkup from '../../components/SchemaMarkup';
 
 export default function ChooseRightRoofer() {
   return (
@@ -9,6 +10,17 @@ export default function ChooseRightRoofer() {
         title="How to Choose a Roofing Contractor in DFW | Avoid Storm Chasers | Ultra Roofing"
         description="Storm season brings unreliable contractors to your door. Learn exactly what to look for when hiring a roofing company in Dallas–Fort Worth — and the red flags to avoid."
         keywords="how to choose roofer DFW, avoid storm chaser roofers Texas, licensed roofing contractor Dallas, reputable roofer Fort Worth, roofing contractor red flags Texas, best roofing company DFW"
+      />
+      <SchemaMarkup
+        type="blogPosting"
+        blogPosting={{
+          slug: 'how-to-choose-roofing-contractor-dfw',
+          headline: 'How to Choose a Roofing Contractor in DFW (And Avoid Getting Burned)',
+          description: 'Storm season brings unreliable contractors to your door. Learn exactly what to look for when hiring a roofing company in Dallas–Fort Worth — and the red flags to avoid.',
+          image: 'https://images.pexels.com/photos/221024/pexels-photo-221024.jpeg?auto=compress&cs=tinysrgb&w=1200',
+          datePublished: '2024-04-22T09:00:00-05:00',
+          author: 'Ultra Roofing Team',
+        }}
       />
 
       <article className="py-12 sm:py-16 lg:py-20 bg-white">
@@ -32,7 +44,7 @@ export default function ChooseRightRoofer() {
             How to Choose a Roofing Contractor in DFW (And Avoid Getting Burned)
           </h1>
 
-          <p className="text-gray-500 mb-8">Published May 1, 2026</p>
+          <p className="text-gray-500 mb-8">Published April 22, 2024 &middot; By Ultra Roofing Team</p>
 
           <div className="prose prose-lg max-w-none">
             <p className="text-lg text-gray-700 mb-6">

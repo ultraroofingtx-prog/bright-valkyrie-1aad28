@@ -1,4 +1,5 @@
 import { Link } from 'react-router-dom';
+import SchemaMarkup from '../../components/SchemaMarkup';
 import { Phone, CheckCircle, ArrowRight } from 'lucide-react';
 
 const steps = [
@@ -59,6 +60,8 @@ const faqs = [
 export default function RoofRepairPage() {
   return (
     <div className="bg-white">
+      <SchemaMarkup type="service" serviceName='Roof Repair' serviceDescription='Fast, affordable roof repair in Fort Worth. Leak repair, missing shingles, storm damage fixes. Licensed & insured. Call for same-day service.' />
+      <SchemaMarkup type="faq" faqItems={faqs.map(f => ({ question: f.q, answer: f.a }))} />
       {/* Hero */}
       <section className="bg-[#1C2A39] text-white py-16 sm:py-20">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 text-center">

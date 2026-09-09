@@ -1,5 +1,6 @@
 import { Phone, Mail, MapPin, Clock, Calculator, ChevronDown } from 'lucide-react';
 import SEO from '../components/SEO';
+import SchemaMarkup from '../components/SchemaMarkup';
 import { useState } from 'react';
 import { Link } from 'react-router-dom';
 
@@ -17,7 +18,7 @@ export default function ContactPage() {
     },
     {
       question: 'What areas do you service?',
-      answer: 'Ultra Roofing proudly serves the entire Dallas-Fort Worth metroplex, including Dallas, Fort Worth, Houston, and all surrounding communities. We provide both residential and commercial roofing services throughout the DFW area.'
+      answer: 'Ultra Roofing proudly serves the entire Dallas-Fort Worth metroplex, including Fort Worth, Rhome, Saginaw, Haslet, and 27+ surrounding DFW-area cities. We provide both residential and commercial roofing services throughout the area.'
     },
     {
       question: 'Do you work with insurance claims?',
@@ -36,6 +37,7 @@ export default function ContactPage() {
         description="Schedule your free roof inspection with Ultra Roofing — licensed DFW roofing contractor. Fast response, no-obligation estimates, and expert insurance claim guidance across all Dallas–Fort Worth cities."
         keywords="free roof inspection Dallas, free roof estimate Fort Worth, contact roofer DFW, roof inspection near me, same-day roof inspection Dallas, hail damage estimate DFW, roof repair quote North Texas, emergency roofer near me DFW, schedule roofing inspection Texas, get roof replaced DFW"
       />
+      <SchemaMarkup type="faq" faqItems={faqs} />
 
       {/* Hero Section */}
       <section className="relative h-[400px] flex items-center justify-center text-white">
@@ -82,7 +84,6 @@ export default function ContactPage() {
               <MapPin className="h-16 w-16 text-[#1C2A39] mx-auto mb-4" />
               <h3 className="text-xl font-bold text-[#1C2A39] mb-2">Service Area</h3>
               <p className="text-gray-700">Dallas-Fort Worth</p>
-              <p className="text-gray-700">Houston</p>
               <p className="text-gray-600 mt-2">& surrounding areas</p>
             </div>
           </div>
@@ -158,7 +159,6 @@ export default function ContactPage() {
                 <div className="space-y-2 text-gray-700">
                   <p><span className="font-semibold">Dallas, TX</span></p>
                   <p><span className="font-semibold">Fort Worth, TX</span></p>
-                  <p><span className="font-semibold">Houston, TX</span></p>
                   <p className="text-gray-600 mt-2">Plus all surrounding areas</p>
                 </div>
               </div>

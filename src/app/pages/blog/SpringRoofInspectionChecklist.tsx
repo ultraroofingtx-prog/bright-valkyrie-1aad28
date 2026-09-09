@@ -1,6 +1,7 @@
 import { Link } from 'react-router-dom';
 import { ArrowLeft } from 'lucide-react';
 import SEO from '../../components/SEO';
+import SchemaMarkup from '../../components/SchemaMarkup';
 
 export default function SpringRoofInspectionChecklist() {
   return (
@@ -9,6 +10,17 @@ export default function SpringRoofInspectionChecklist() {
         title="Spring Roof Inspection Checklist for DFW Homeowners | Ultra Roofing"
         description="Use this spring roof inspection checklist to catch storm damage, leaks, and wear before the Texas summer heat arrives. Ultra Roofing serves all Dallas–Fort Worth cities."
         keywords="spring roof inspection checklist DFW, roof inspection after winter Texas, spring roof maintenance Dallas, pre-summer roof check Fort Worth, roof inspection tips Texas homeowners"
+      />
+      <SchemaMarkup
+        type="blogPosting"
+        blogPosting={{
+          slug: 'spring-roof-inspection-checklist-dfw',
+          headline: 'Spring Roof Inspection Checklist for DFW Homeowners',
+          description: 'Use this spring roof inspection checklist to catch storm damage, leaks, and wear before the Texas summer heat arrives. Ultra Roofing serves all Dallas–Fort Worth cities.',
+          image: 'https://images.pexels.com/photos/834892/pexels-photo-834892.jpeg?auto=compress&cs=tinysrgb&w=1200',
+          datePublished: '2024-04-08T09:00:00-05:00',
+          author: 'Ultra Roofing Team',
+        }}
       />
 
       <article className="py-12 sm:py-16 lg:py-20 bg-white">
@@ -32,7 +44,7 @@ export default function SpringRoofInspectionChecklist() {
             Spring Roof Inspection Checklist for DFW Homeowners
           </h1>
 
-          <p className="text-gray-500 mb-8">Published May 1, 2026</p>
+          <p className="text-gray-500 mb-8">Published April 8, 2024 &middot; By Ultra Roofing Team</p>
 
           <div className="prose prose-lg max-w-none">
             <p className="text-lg text-gray-700 mb-6">
