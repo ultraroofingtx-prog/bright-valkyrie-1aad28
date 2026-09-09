@@ -134,7 +134,7 @@ export default function ChatBot({ isOpen, onClose }: ChatBotProps) {
   if (!isOpen) return null;
 
   return (
-    <div className="fixed bottom-20 right-6 w-96 h-[600px] bg-white rounded-lg shadow-2xl flex flex-col z-50 border border-gray-200">
+    <div className="fixed z-50 bg-white rounded-lg shadow-2xl border border-gray-200 flex flex-col left-4 right-4 top-24 bottom-20 lg:left-auto lg:top-auto lg:right-6 lg:bottom-20 lg:w-96 lg:h-[600px]">
       <div className="bg-gradient-to-r from-blue-600 to-blue-700 text-white p-4 rounded-t-lg flex items-center justify-between">
         <div className="flex items-center gap-2">
           <Calendar className="w-5 h-5" />
