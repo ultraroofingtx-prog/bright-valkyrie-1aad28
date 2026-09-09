@@ -15,6 +15,7 @@ interface InspectionRequest {
   address: string;
   propertyType: string;
   message?: string;
+  smsConsent?: boolean;
 }
 
 Deno.serve(async (req: Request) => {
@@ -42,6 +43,7 @@ Deno.serve(async (req: Request) => {
       property_type: data.propertyType,
       message: data.message || "",
       status: "pending",
+      sms_consent: data.smsConsent === true,
     });
 
     // Attempt email delivery — non-fatal if it fails
