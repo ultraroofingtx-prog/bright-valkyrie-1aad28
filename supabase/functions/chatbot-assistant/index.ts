@@ -1,4 +1,5 @@
 import { createClient } from "npm:@supabase/supabase-js@2.57.4";
+import { checkRateLimit, getClientIp, rateLimitResponse } from "../_shared/rateLimit.ts";
 
 const corsHeaders = {
   "Access-Control-Allow-Origin": "*",
@@ -32,10 +33,17 @@ Deno.serve(async (req: Request) => {
   }
 
   try {
-    const supabase = createClient(
-      Deno.env.get("SUPABASE_URL") ?? "",
-      Deno.env.get("SUPABASE_ANON_KEY") ?? ""
+    const supabaseUrl = Deno.env.get("SUPABASE_URL") ?? "";
+
+    const { allowed } = await checkRateLimit(
+      supabaseUrl,
+      Deno.env.get("SUPABASE_SERVICE_ROLE_KEY") ?? "",
+      getClientIp(req),
+      "chatbot-assistant",
     );
+    if (!allowed) return rateLimitResponse(corsHeaders);
+
+    const supabase = createClient(supabaseUrl, Deno.env.get("SUPABASE_ANON_KEY") ?? "");
 
     const { conversation_id, message }: ChatRequest = await req.json();
 
