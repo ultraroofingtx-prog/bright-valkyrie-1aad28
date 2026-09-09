@@ -139,7 +139,7 @@ Deno.serve(async (req: Request) => {
     console.error("Chatbot error:", error);
     return new Response(
       JSON.stringify({
-        message: "I apologize, but I'm having trouble processing your request. Please call us at (123) 456-7890 for immediate assistance.",
+        message: "I apologize, but I'm having trouble processing your request. Please call us at (833) 356-7233 for immediate assistance.",
         error: error.message,
       }),
       {
@@ -431,14 +431,14 @@ async function generateResponse(
 
   if (lowerMessage.includes("reschedule") || lowerMessage.includes("change")) {
     return {
-      message: "To reschedule your appointment, please call us at (123) 456-7890.",
+      message: "To reschedule your appointment, please call us at (833) 356-7233.",
       updates: {},
       action: "help",
     };
   }
 
   return {
-    message: "Your inspection is all scheduled! If you need anything else, feel free to ask or call us at (123) 456-7890.",
+    message: "Your inspection is all scheduled! If you need anything else, feel free to ask or call us at (833) 356-7233.",
     updates: {},
     action: "complete",
   };
