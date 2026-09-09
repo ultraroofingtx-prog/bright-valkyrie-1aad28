@@ -29,7 +29,7 @@ export default function RoofReplacementCost() {
         title="How Much Does a Roof Replacement Cost in Dallas-Fort Worth? | Ultra Roofing"
         description="Learn about roof replacement costs in Dallas-Fort Worth. Get pricing estimates, cost factors, and tips for budgeting your roofing project from Ultra Roofing."
         keywords="roof replacement cost, roof replacement price Dallas, Fort Worth roof replacement cost, new roof cost DFW, roofing prices Texas"
-        canonicalUrl="https://ultraroofingtx.net/blog/roof-replacement-cost-dallas-fort-worth"
+        canonicalUrl="https://ultraroofingtx.com/blog/roof-replacement-cost-dallas-fort-worth"
       />
       <SchemaMarkup type="faq" faqItems={faqItems} />
 

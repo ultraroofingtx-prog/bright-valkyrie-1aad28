@@ -97,7 +97,7 @@ const CommercialInsuranceClaimTexas: React.FC = () => {
         title="How to File a Commercial Roof Insurance Claim in Texas | Ultra Roofing DFW"
         description="Step-by-step guide to filing a commercial roof insurance claim in Texas after hail or storm damage. Ultra Roofing serves Dallas-Fort Worth property owners through the entire claims process. Free inspections available."
         keywords="commercial roof insurance claim Texas, hail damage commercial roof claim DFW, storm damage roofing insurance Fort Worth, TPO roof insurance claim Dallas, commercial property insurance claim Texas, roof insurance adjuster DFW, hail damage documentation Texas, insurance claim roofing contractor Irving TX"
-        canonicalUrl="https://ultraroofingtx.net/commercial-roof-insurance-claim-texas"
+        canonicalUrl="https://ultraroofingtx.com/commercial-roof-insurance-claim-texas"
         ogTitle="How to File a Commercial Roof Insurance Claim in Texas | Ultra Roofing DFW"
       />
       <SchemaMarkup type="faq" faqItems={faqItems} />

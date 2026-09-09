@@ -33,7 +33,7 @@ export default function DFWHailSeasonGuide() {
         title="DFW Hail Season Commercial Roofing Guide 2026 | Ultra Roofing Irving TX"
         description="Dallas-Fort Worth averages 6–8 damaging hail events per year. Ultra Roofing's guide covers hail season timing, damage thresholds, and how to protect your commercial property before and after a storm."
         keywords="DFW hail season 2026, hail damage commercial roof Dallas Fort Worth, commercial roof hail damage Texas, hail season roofing DFW, when is hail season Dallas, commercial property hail damage Texas, hail damage TPO roof DFW, storm damage commercial roofing Irving TX, post-storm roof inspection DFW"
-        canonicalUrl="https://ultraroofingtx.net/dfw-hail-season-commercial-roofing-guide"
+        canonicalUrl="https://ultraroofingtx.com/dfw-hail-season-commercial-roofing-guide"
         ogTitle="DFW Hail Season Commercial Roofing Guide 2026 | Ultra Roofing Irving TX"
       />
 

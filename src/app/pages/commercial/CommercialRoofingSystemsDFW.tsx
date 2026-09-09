@@ -34,7 +34,7 @@ const CommercialRoofingSystemsDFW: React.FC = () => {
         title="TPO vs EPDM vs Metal Roofing DFW — Commercial Roofing Guide | Ultra Roofing"
         description="Comparing TPO, EPDM, and metal roofing for your Dallas-Fort Worth commercial property? Ultra Roofing breaks down cost, lifespan, and which system fits your building. Free inspection available."
         keywords="commercial roofing systems DFW, TPO vs EPDM Dallas Fort Worth, metal roofing commercial DFW, TPO roofing contractor Fort Worth, EPDM roofing Dallas TX, standing seam metal roof DFW, commercial flat roof system comparison Texas, TPO roof cost Dallas, commercial roofing guide DFW, roofing contractor Irving TX"
-        canonicalUrl="https://ultraroofingtx.net/commercial-roofing-systems-dfw"
+        canonicalUrl="https://ultraroofingtx.com/commercial-roofing-systems-dfw"
         ogTitle="TPO vs EPDM vs Metal Roofing DFW — Commercial Roofing Guide | Ultra Roofing"
       />
       <SchemaMarkup type="faq" faqItems={faqItems} />

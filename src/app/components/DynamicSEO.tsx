@@ -40,7 +40,7 @@ export default function DynamicSEO({
   const finalOgDescription = seoData.ogDescription || seoData.description;
   const finalOgImage = seoData.ogImage || 'https://images.pexels.com/photos/2219024/pexels-photo-2219024.jpeg?auto=compress&cs=tinysrgb&w=1200';
 
-  const siteUrl = 'https://ultraroofingtx.net';
+  const siteUrl = 'https://ultraroofingtx.com';
   const canonicalUrl = `${siteUrl}${location.pathname}`;
 
   useEffect(() => {

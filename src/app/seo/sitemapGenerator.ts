@@ -5,7 +5,7 @@ export function generateSitemap(): string {
     .filter(path => !routes[path]?.noindex)
     .map(path => {
       const meta = routes[path];
-      const loc = meta.canonicalUrl || `https://ultraroofingtx.net${path}`;
+      const loc = meta.canonicalUrl || `https://ultraroofingtx.com${path}`;
 
       let priority = '0.7';
       let changefreq = 'monthly';

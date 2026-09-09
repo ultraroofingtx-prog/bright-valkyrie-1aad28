@@ -20,7 +20,7 @@ export default function CityPageTemplate({
   serviceImage = 'https://images.pexels.com/photos/259593/pexels-photo-259593.jpeg?auto=compress&cs=tinysrgb&w=800',
   additionalContent
 }: CityPageProps) {
-  const canonicalUrl = `https://ultraroofingtx.net/service-areas/${citySlug}`;
+  const canonicalUrl = `https://ultraroofingtx.com/service-areas/${citySlug}`;
   return (
     <>
       <SEO

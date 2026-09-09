@@ -1,6 +1,6 @@
 # Ultra Roofing — Static Astro Site
 
-Complete rebuild of ultraroofingtx.net as a fully static Astro site.
+Complete rebuild of ultraroofingtx.com as a fully static Astro site.
 Every one of the 99 pages is a physical HTML file with all content, meta
 tags, and JSON-LD schema baked in — readable by Google, Bing, and AI
 crawlers (GPTBot, ClaudeBot, PerplexityBot) with zero JavaScript.
@@ -23,7 +23,7 @@ crawlers (GPTBot, ClaudeBot, PerplexityBot) with zero JavaScript.
 - JSON-LD schema server-rendered: organization on every page, city schema
   on service-area pages, NEW FAQPage schema on /roofing/* pages
 - All canonicals/schema pointed at ultraroofing.com (a different company!)
-  — corrected to ultraroofingtx.net
+  — corrected to ultraroofingtx.com
 - City canonicals pointed at /cities/<slug>, a route that never existed —
   corrected to /service-areas/<slug>
 - Sitemap auto-generated on every build (sitemap-index.xml), admin excluded
@@ -36,7 +36,7 @@ crawlers (GPTBot, ClaudeBot, PerplexityBot) with zero JavaScript.
 ## Deploying (pick one)
 1. NETLIFY DROP (fastest, no Bolt): run the build, then drag the dist/
    folder onto https://app.netlify.com/drop — then point
-   ultraroofingtx.net at that site in Netlify's domain settings.
+   ultraroofingtx.com at that site in Netlify's domain settings.
    The prebuilt dist/ zip I delivered can be dropped as-is.
 2. BOLT: create a new project, import/upload this folder (everything
    except node_modules and dist), and publish. Build command: npm run
@@ -48,7 +48,7 @@ If your host serves /about as a 404 (rare), change `build.format` from
 'file' to 'directory' in astro.config.mjs and rebuild.
 
 ## After deploying — verify (10 seconds)
-Open view-source:https://ultraroofingtx.net and search for
+Open view-source:https://ultraroofingtx.com and search for
 "Trusted Roofing Contractor". If it's there, everything shipped.
 
 ## Notes

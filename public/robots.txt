@@ -26,4 +26,4 @@ Disallow: /leads
 Disallow: /blog-scheduler
 Disallow: /seo-manager
 
-Sitemap: https://ultraroofingtx.net/sitemap-index.xml
+Sitemap: https://ultraroofingtx.com/sitemap-index.xml

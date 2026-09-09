@@ -12,8 +12,8 @@ export interface RouteMeta {
   citySlug?: string;
 }
 
-const SITE_URL = 'https://ultraroofingtx.net';
-const DEFAULT_OG_IMAGE = 'https://ultraroofingtx.net/ULTRA%20ROOFING%20logo%20(1).png';
+const SITE_URL = 'https://ultraroofingtx.com';
+const DEFAULT_OG_IMAGE = 'https://ultraroofingtx.com/ULTRA%20ROOFING%20logo%20(1).png';
 
 export const routes: Record<string, RouteMeta> = {
   '/': {

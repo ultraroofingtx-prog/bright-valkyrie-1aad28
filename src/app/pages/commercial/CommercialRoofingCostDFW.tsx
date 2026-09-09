@@ -33,7 +33,7 @@ export default function CommercialRoofingCostDFW() {
         title="Commercial Roofing Cost Guide DFW 2025–2026 | Ultra Roofing Dallas Fort Worth"
         description="Real commercial roofing costs for the Dallas-Fort Worth market in 2025–2026. TPO, EPDM, metal, and modified bitumen pricing per square foot. Free estimates from Ultra Roofing."
         keywords="commercial roofing cost DFW, TPO roof replacement cost Dallas Fort Worth, commercial roof cost per square foot Texas, EPDM roof installation cost DFW, flat roof replacement cost Dallas, commercial roofing estimate Fort Worth, roof coating cost Texas, commercial roof repair cost Irving TX, 2025 2026 roofing prices DFW"
-        canonicalUrl="https://ultraroofingtx.net/commercial-roofing-cost-dfw"
+        canonicalUrl="https://ultraroofingtx.com/commercial-roofing-cost-dfw"
         ogTitle="Commercial Roofing Cost Guide DFW 2025–2026 | Ultra Roofing Dallas Fort Worth"
       />
 

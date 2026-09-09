@@ -34,7 +34,7 @@ export default function CityRoofingTemplate({ citySlug }: Props) {
         title={`${city.name} Roofing Contractor | Roof Repair & Replacement | Ultra Roofing`}
         description={`Ultra Roofing is a licensed roofing contractor serving ${city.name}, TX. Expert roof replacement, hail damage repair, commercial roofing, and free inspections across ${city.county}. Call for a same-day estimate.`}
         keywords={`roofing contractor ${city.name} TX, roof repair ${city.name}, roof replacement ${city.name}, roofer near me ${city.name}, hail damage roof repair ${city.name}, licensed roofer ${city.name} Texas, free roof inspection ${city.name}, storm damage roofing ${city.name}`}
-        canonicalUrl={`https://ultraroofingtx.net/service-areas/${city.slug}`}
+        canonicalUrl={`https://ultraroofingtx.com/service-areas/${city.slug}`}
       />
       <SchemaMarkup type="city" cityName={city.name} citySlug={city.slug} />
 

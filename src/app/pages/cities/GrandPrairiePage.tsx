@@ -10,7 +10,7 @@ export default function GrandPrairiePage() {
         title="Commercial & Residential Roofing Contractor Grand Prairie, TX | Ultra Roofing"
         description="Ultra Roofing is a licensed commercial and residential roofing contractor serving Grand Prairie, TX. Expert TPO roofing, storm damage repair, hail damage inspection, and insurance claim assistance. Free inspection."
         keywords="roofing contractor Grand Prairie TX, commercial roofing Grand Prairie, roof repair Grand Prairie Texas, roof replacement Grand Prairie, hail damage roof Grand Prairie, TPO roofing Grand Prairie TX, licensed roofer Grand Prairie, storm damage roofing Grand Prairie Texas, free roof inspection Grand Prairie"
-        canonicalUrl="https://ultraroofingtx.net/service-areas/grand-prairie"
+        canonicalUrl="https://ultraroofingtx.com/service-areas/grand-prairie"
       />
       <SchemaMarkup type="city" cityName="Grand Prairie" citySlug="grand-prairie" />
 

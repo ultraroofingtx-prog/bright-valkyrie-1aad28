@@ -6,7 +6,7 @@ import { fileURLToPath } from 'node:url';
 // Fully static build: every route becomes a physical HTML file in dist/
 // with all content, meta tags, and JSON-LD baked in.
 export default defineConfig({
-  site: 'https://ultraroofingtx.net',
+  site: 'https://ultraroofingtx.com',
   output: 'static',
   trailingSlash: 'never',
   build: { format: 'file' },

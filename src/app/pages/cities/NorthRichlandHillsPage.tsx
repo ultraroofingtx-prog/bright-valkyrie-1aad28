@@ -10,7 +10,7 @@ export default function NorthRichlandHillsPage() {
         title="Commercial & Residential Roofing Contractor North Richland Hills, TX | Ultra Roofing"
         description="Ultra Roofing is a licensed commercial and residential roofing contractor serving North Richland Hills, TX. Expert TPO roofing, storm damage repair, hail damage inspection, and insurance claim assistance. Free inspection."
         keywords="roofing contractor North Richland Hills TX, commercial roofing North Richland Hills, roof repair North Richland Hills Texas, roof replacement North Richland Hills, hail damage roof North Richland Hills, TPO roofing North Richland Hills TX, licensed roofer North Richland Hills, storm damage roofing North Richland Hills Texas, free roof inspection North Richland Hills"
-        canonicalUrl="https://ultraroofingtx.net/service-areas/north-richland-hills"
+        canonicalUrl="https://ultraroofingtx.com/service-areas/north-richland-hills"
       />
       <SchemaMarkup type="city" cityName="North Richland Hills" citySlug="north-richland-hills" />
 

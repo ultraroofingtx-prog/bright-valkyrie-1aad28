@@ -81,7 +81,7 @@ export default function SEO({
     }
 
     // Canonical
-    const resolvedCanonical = canonicalUrl || `https://ultraroofingtx.net${window.location.pathname}`;
+    const resolvedCanonical = canonicalUrl || `https://ultraroofingtx.com${window.location.pathname}`;
     let link = document.querySelector('link[rel="canonical"]');
     if (link) {
       link.setAttribute('href', resolvedCanonical);

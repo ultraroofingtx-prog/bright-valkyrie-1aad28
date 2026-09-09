@@ -10,7 +10,7 @@ export default function ColleyvillePage() {
         title="Commercial & Residential Roofing Contractor Colleyville, TX | Ultra Roofing"
         description="Ultra Roofing is a licensed commercial and residential roofing contractor serving Colleyville, TX. Expert TPO roofing, storm damage repair, hail damage inspection, and insurance claim assistance. Free inspection."
         keywords="roofing contractor Colleyville TX, commercial roofing Colleyville, roof repair Colleyville Texas, roof replacement Colleyville, hail damage roof Colleyville, TPO roofing Colleyville TX, licensed roofer Colleyville, storm damage roofing Colleyville Texas, free roof inspection Colleyville"
-        canonicalUrl="https://ultraroofingtx.net/service-areas/colleyville"
+        canonicalUrl="https://ultraroofingtx.com/service-areas/colleyville"
       />
       <SchemaMarkup type="city" cityName="Colleyville" citySlug="colleyville" />
 

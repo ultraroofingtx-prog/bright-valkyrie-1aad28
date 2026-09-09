@@ -36,7 +36,7 @@ export default function HomePage() {
         keywords="roofing contractor Dallas Fort Worth, roofer near me DFW, roof repair Dallas, roof replacement Fort Worth, hail damage roof repair DFW, storm damage roofing Texas, licensed roofing contractor North Texas, free roof inspection Dallas, emergency roof repair DFW, residential roofing Dallas, commercial roofing Fort Worth, roof replacement cost DFW, insurance claim roofing Texas, GAF certified roofer DFW, local roofing company North Texas"
         ogTitle="DFW's Trusted Roofing Contractor | Free Inspections | Ultra Roofing"
         ogDescription="Storm hit your roof? Ultra Roofing offers free same-day inspections across Dallas–Fort Worth. Expert hail damage repair, insurance claim help, and fast turnarounds."
-        canonicalUrl="https://ultraroofingtx.net"
+        canonicalUrl="https://ultraroofingtx.com"
       />
       <SchemaMarkup type="organization" />
 

@@ -34,7 +34,7 @@ const ChooseCommercialRooferDFW: React.FC = () => {
         title="How to Choose a Commercial Roofing Contractor in DFW | Ultra Roofing Irving TX"
         description="7 things every DFW commercial property owner should verify before hiring a roofing contractor. Expert guide from Ultra Roofing, serving the Dallas-Fort Worth metroplex."
         keywords="how to choose commercial roofing contractor DFW, commercial roofing contractor Dallas Fort Worth, verify roofing contractor Texas, licensed roofing contractor Irving TX, commercial roofer credentials Texas, storm chaser warning DFW, roofing contractor insurance Texas, TDLR roofing license Texas"
-        canonicalUrl="https://ultraroofingtx.net/how-to-choose-commercial-roofing-contractor-dfw"
+        canonicalUrl="https://ultraroofingtx.com/how-to-choose-commercial-roofing-contractor-dfw"
       />
       <SchemaMarkup type="faq" faqItems={faqItems} />
 
