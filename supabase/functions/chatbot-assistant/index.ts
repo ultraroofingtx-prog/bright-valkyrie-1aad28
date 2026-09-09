@@ -385,6 +385,29 @@ async function generateResponse(
         const formattedDate = date.toLocaleDateString("en-US", { weekday: "long", month: "long", day: "numeric" });
         const formattedTime = formatTime(context.preferred_time!);
 
+        try {
+          await fetch(
+            `${Deno.env.get("SUPABASE_URL")}/functions/v1/send-inspection-email`,
+            {
+              method: "POST",
+              headers: {
+                "Content-Type": "application/json",
+                "Authorization": `Bearer ${Deno.env.get("SUPABASE_ANON_KEY")}`,
+              },
+              body: JSON.stringify({
+                name: context.customer_name,
+                email: context.customer_email,
+                phone: context.customer_phone,
+                address: `${context.address}, ${userMessage}`,
+                propertyType: context.inspection_type,
+                message: `Booked via AI chatbot. Preferred inspection time: ${formattedDate} at ${formattedTime}.`,
+              }),
+            }
+          );
+        } catch (emailError) {
+          console.error("Chatbot booking email error:", emailError);
+        }
+
         return {
           message: `Perfect! Your ${context.inspection_type} roof inspection is scheduled! 🎉\n\n📅 Date: ${formattedDate}\n⏰ Time: ${formattedTime}\n📍 Location: ${context.address}, ${userMessage}\n\nWe'll send a confirmation email to ${context.customer_email}. A team member will call you at ${context.customer_phone} the day before your appointment.\n\nIs there anything else I can help you with?`,
           updates: { city: userMessage },
@@ -393,7 +416,7 @@ async function generateResponse(
       } catch (error) {
         console.error("Booking error:", error);
         return {
-          message: "I encountered an error creating your booking. Please call us at (123) 456-7890 to complete your scheduling.",
+          message: "I encountered an error creating your booking. Please call us at (833) 356-7233 to complete your scheduling.",
           updates: {},
           action: "error",
         };
