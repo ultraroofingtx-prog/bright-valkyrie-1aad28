@@ -18,12 +18,4 @@ Allow: /
 User-agent: CCBot
 Allow: /
 
-# Block admin routes from indexing
-User-agent: *
-Disallow: /admin
-Disallow: /admin/
-Disallow: /leads
-Disallow: /blog-scheduler
-Disallow: /seo-manager
-
 Sitemap: https://ultraroofingtx.com/sitemap-index.xml

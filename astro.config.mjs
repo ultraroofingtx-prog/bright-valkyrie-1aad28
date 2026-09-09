@@ -12,9 +12,7 @@ export default defineConfig({
   build: { format: 'file' },
   integrations: [
     react(),
-    sitemap({
-      filter: (page) => !page.includes('/admin'),
-    }),
+    sitemap(),
   ],
   vite: {
     envPrefix: ['VITE_', 'PUBLIC_'],
