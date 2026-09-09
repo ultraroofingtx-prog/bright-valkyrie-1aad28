@@ -162,20 +162,32 @@ async function generateResponse(
   const lowerMessage = userMessage.toLowerCase();
 
   if (!context.customer_name) {
-    if (lowerMessage.includes("my name is") || lowerMessage.includes("i'm") || lowerMessage.includes("i am")) {
-      const nameMatch = userMessage.match(/(?:my name is|i'm|i am)\s+([a-zA-Z\s]+)/i);
-      const extractedName = nameMatch ? nameMatch[1].trim() : null;
+    const prefixMatch = userMessage.match(/(?:my name is|i'm|i am|this is|name's)\s+([a-zA-Z\s'-]+)/i);
+    let extractedName = prefixMatch ? prefixMatch[1].trim() : null;
 
-      if (extractedName) {
-        return {
-          message: `Nice to meet you, ${extractedName}! To schedule your roof inspection, I'll need a few details. What's your email address?`,
-          updates: { customer_name: extractedName },
-          action: "collect_email",
-        };
+    // Most people just type their name directly ("John Smith") with no
+    // lead-in phrase — accept that as long as it looks like a plain name
+    // (letters only, at most 4 words) rather than some other kind of reply.
+    if (!extractedName) {
+      const trimmed = userMessage.trim();
+      if (
+        trimmed.length >= 2 &&
+        trimmed.length <= 40 &&
+        /^[a-zA-Z][a-zA-Z'-]*(\s+[a-zA-Z][a-zA-Z'-]*){0,3}$/.test(trimmed)
+      ) {
+        extractedName = trimmed;
       }
     }
+
+    if (extractedName) {
+      return {
+        message: `Nice to meet you, ${extractedName}! To schedule your roof inspection, I'll need a few details. What's your email address?`,
+        updates: { customer_name: extractedName },
+        action: "collect_email",
+      };
+    }
     return {
-      message: "I'd be happy to help you schedule a roof inspection! To get started, may I have your name?",
+      message: "I'd be happy to help you schedule a roof inspection! To get started, what's your name?",
       updates: {},
       action: "collect_name",
     };
@@ -247,22 +259,7 @@ async function generateResponse(
 
   if (!context.preferred_date) {
     const availableDates = await getNextAvailableDates(supabase, 7);
-
-    let selectedDate = null;
-    const numberMatch = userMessage.match(/(\d+)/);
-    if (numberMatch) {
-      const index = parseInt(numberMatch[1]) - 1;
-      if (index >= 0 && index < availableDates.length) {
-        selectedDate = availableDates[index].date;
-      }
-    }
-
-    if (!selectedDate) {
-      const dateMatch = userMessage.match(/\d{4}-\d{2}-\d{2}/);
-      if (dateMatch) {
-        selectedDate = dateMatch[0];
-      }
-    }
+    const selectedDate = matchAvailableDate(userMessage, availableDates);
 
     if (selectedDate) {
       const slots = await getAvailableSlots(supabase, selectedDate);
@@ -288,7 +285,7 @@ async function generateResponse(
       };
     }
     return {
-      message: "Please select a date by typing its number or the full date.",
+      message: "Please pick a date by number, day name (like \"Monday\"), or date (like \"9/15\" or \"tomorrow\").",
       updates: {},
       action: "collect_date",
     };
@@ -297,22 +294,7 @@ async function generateResponse(
   if (!context.preferred_time) {
     const slots = await getAvailableSlots(supabase, context.preferred_date);
     const availableSlots = slots.filter((s: any) => s.available);
-
-    let selectedTime = null;
-    const numberMatch = userMessage.match(/(\d+)/);
-    if (numberMatch) {
-      const index = parseInt(numberMatch[1]) - 1;
-      if (index >= 0 && index < availableSlots.length) {
-        selectedTime = availableSlots[index].time;
-      }
-    }
-
-    if (!selectedTime) {
-      const timeMatch = userMessage.match(/(\d{1,2}):(\d{2})/);
-      if (timeMatch) {
-        selectedTime = `${timeMatch[1].padStart(2, "0")}:${timeMatch[2]}`;
-      }
-    }
+    const selectedTime = matchAvailableTime(userMessage, availableSlots);
 
     if (selectedTime) {
       return {
@@ -322,7 +304,7 @@ async function generateResponse(
       };
     }
     return {
-      message: "Please select a time by typing its number or time (e.g., 2:00 PM).",
+      message: "Please pick a time by number or time (like \"2pm\" or \"2:00\").",
       updates: {},
       action: "collect_time",
     };
@@ -516,4 +498,126 @@ function formatTime(time: string): string {
   const ampm = hour >= 12 ? "PM" : "AM";
   const displayHour = hour > 12 ? hour - 12 : hour === 0 ? 12 : hour;
   return `${displayHour}:${minutes} ${ampm}`;
+}
+
+const WEEKDAYS = ["sunday", "monday", "tuesday", "wednesday", "thursday", "friday", "saturday"];
+const MONTHS = [
+  "january", "february", "march", "april", "may", "june",
+  "july", "august", "september", "october", "november", "december",
+];
+
+/**
+ * Matches a user's free-text reply to one of the offered available dates,
+ * so they aren't forced into typing a number or an exact YYYY-MM-DD.
+ * Accepts: list number, ISO date, "tomorrow"/"today", a weekday name
+ * ("Monday"), "Sept 15" / "September 15th", or "9/15".
+ */
+function matchAvailableDate(userMessage: string, availableDates: { date: string }[]): string | null {
+  const trimmed = userMessage.trim();
+  const lower = trimmed.toLowerCase();
+
+  // Unambiguous explicit formats are checked first, so e.g. "5/15" is read
+  // as May 15th rather than its leading "5" being read as list index 5.
+  const isoMatch = trimmed.match(/\d{4}-\d{2}-\d{2}/);
+  if (isoMatch && availableDates.some((d) => d.date === isoMatch[0])) {
+    return isoMatch[0];
+  }
+
+  const slashMatch = trimmed.match(/^(\d{1,2})[/-](\d{1,2})(?:[/-]\d{2,4})?$/);
+  if (slashMatch) {
+    const month = parseInt(slashMatch[1]) - 1;
+    const day = parseInt(slashMatch[2]);
+    const match = availableDates.find((d) => {
+      const dt = new Date(`${d.date}T00:00:00`);
+      return dt.getMonth() === month && dt.getDate() === day;
+    });
+    if (match) return match.date;
+  }
+
+  const monthNameMatch = lower.match(/([a-z]+)\.?\s+(\d{1,2})(?:st|nd|rd|th)?/);
+  if (monthNameMatch) {
+    const token = monthNameMatch[1];
+    const day = parseInt(monthNameMatch[2]);
+    const monthIndex = MONTHS.findIndex((m) => m.startsWith(token) && token.length >= 3);
+    if (monthIndex !== -1) {
+      const match = availableDates.find((d) => {
+        const dt = new Date(`${d.date}T00:00:00`);
+        return dt.getMonth() === monthIndex && dt.getDate() === day;
+      });
+      if (match) return match.date;
+    }
+  }
+
+  if (lower.includes("tomorrow") || lower.includes("today")) {
+    const target = new Date();
+    target.setDate(target.getDate() + (lower.includes("tomorrow") ? 1 : 0));
+    const targetStr = target.toISOString().split("T")[0];
+    const match = availableDates.find((d) => d.date === targetStr);
+    if (match) return match.date;
+  }
+
+  for (const day of WEEKDAYS) {
+    if (lower.includes(day)) {
+      const match = availableDates.find(
+        (d) => new Date(`${d.date}T00:00:00`).toLocaleDateString("en-US", { weekday: "long" }).toLowerCase() === day
+      );
+      if (match) return match.date;
+    }
+  }
+
+  // Bare number selects from the numbered list ("2" -> option 2) — checked
+  // last since it's the most ambiguous form.
+  const numberMatch = trimmed.match(/(\d{1,2})/);
+  if (numberMatch) {
+    const index = parseInt(numberMatch[1]) - 1;
+    if (index >= 0 && index < availableDates.length) {
+      return availableDates[index].date;
+    }
+  }
+
+  return null;
+}
+
+/**
+ * Matches a user's free-text reply to one of the offered available time
+ * slots. Accepts: list number, "3pm", "3:00 pm", "15:00", or a bare hour
+ * like "3" (assumed PM within the 1-7 range since business hours run
+ * 8am-4pm and no legitimate slot needs that assumption for the morning).
+ */
+function matchAvailableTime(userMessage: string, availableSlots: { time: string }[]): string | null {
+  const trimmed = userMessage.trim();
+  const lower = trimmed.toLowerCase();
+
+  // An explicit time ("3pm", "3:00 pm", "15:00") unambiguously states a
+  // time, so it takes priority over reading the same digit as a list index.
+  const explicitMatch = lower.match(/(\d{1,2})(?::(\d{2}))?\s*(am|pm)/) || lower.match(/(\d{1,2}):(\d{2})/);
+  if (explicitMatch) {
+    let hour = parseInt(explicitMatch[1]);
+    const minute = explicitMatch[2] ?? "00";
+    const meridiem = explicitMatch[3];
+
+    if (meridiem === "pm" && hour < 12) hour += 12;
+    if (meridiem === "am" && hour === 12) hour = 0;
+
+    const candidate = `${hour.toString().padStart(2, "0")}:${minute.padStart(2, "0")}`;
+    if (availableSlots.some((s) => s.time === candidate)) return candidate;
+  }
+
+  // Otherwise a bare number selects from the numbered list ("2" -> option 2).
+  const numberMatch = trimmed.match(/(\d{1,2})/);
+  if (numberMatch) {
+    const index = parseInt(numberMatch[1]) - 1;
+    if (index >= 0 && index < availableSlots.length) {
+      return availableSlots[index].time;
+    }
+
+    // Didn't match a list position — try it as a bare hour. Slots run
+    // 8am-4pm, so 1-7 with no am/pm unambiguously means the afternoon.
+    let hour = parseInt(numberMatch[1]);
+    if (hour >= 1 && hour <= 7) hour += 12;
+    const candidate = `${hour.toString().padStart(2, "0")}:00`;
+    if (availableSlots.some((s) => s.time === candidate)) return candidate;
+  }
+
+  return null;
 }
