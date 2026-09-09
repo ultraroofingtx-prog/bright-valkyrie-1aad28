@@ -323,7 +323,7 @@ export default function DFWHailSeasonGuide() {
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
             <a
-              href="tel:+1-972-555-0100"
+              href="tel:+18333567233"
               className="bg-[#1C2A39] text-white px-8 py-4 rounded-lg font-bold flex items-center gap-2 hover:bg-gray-900 transition"
             >
               <Phone className="w-5 h-5" />
