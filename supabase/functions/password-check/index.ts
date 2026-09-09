@@ -1,4 +1,5 @@
 import { createClient } from "npm:@supabase/supabase-js@2.57.4";
+import { checkRateLimit, getClientIp, rateLimitResponse } from "../_shared/rateLimit.ts";
 
 const corsHeaders = {
   "Access-Control-Allow-Origin": "*",
@@ -43,6 +44,14 @@ Deno.serve(async (req: Request) => {
   }
 
   try {
+    const { allowed } = await checkRateLimit(
+      Deno.env.get("SUPABASE_URL") ?? "",
+      Deno.env.get("SUPABASE_SERVICE_ROLE_KEY") ?? "",
+      getClientIp(req),
+      "password-check",
+    );
+    if (!allowed) return rateLimitResponse(corsHeaders);
+
     const authHeader = req.headers.get("Authorization");
     if (!authHeader) {
       return new Response(

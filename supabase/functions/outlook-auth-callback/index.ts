@@ -1,4 +1,6 @@
 import { createClient } from "npm:@supabase/supabase-js@2.57.4";
+import { checkRateLimit, getClientIp, rateLimitResponse } from "../_shared/rateLimit.ts";
+import { requireAdmin } from "../_shared/requireAdmin.ts";
 
 const corsHeaders = {
   "Access-Control-Allow-Origin": "*",
@@ -15,10 +17,20 @@ Deno.serve(async (req: Request) => {
   }
 
   try {
-    const supabase = createClient(
-      Deno.env.get("SUPABASE_URL") ?? "",
-      Deno.env.get("SUPABASE_SERVICE_ROLE_KEY") ?? ""
-    );
+    const supabaseUrl = Deno.env.get("SUPABASE_URL") ?? "";
+    const serviceRoleKey = Deno.env.get("SUPABASE_SERVICE_ROLE_KEY") ?? "";
+    const supabase = createClient(supabaseUrl, serviceRoleKey);
+
+    const { allowed } = await checkRateLimit(supabaseUrl, serviceRoleKey, getClientIp(req), "outlook-auth-callback");
+    if (!allowed) return rateLimitResponse(corsHeaders);
+
+    // This exchanges an OAuth code for a token and writes it to
+    // outlook_calendar_config with the service-role key, which bypasses
+    // RLS - only the admin who owns that Outlook connection should be
+    // able to trigger it. It's only ever called from the authenticated
+    // admin panel, so this check should never actually block a real user.
+    const admin = await requireAdmin(req, supabaseUrl, serviceRoleKey, corsHeaders);
+    if (!admin.ok) return admin.response;
 
     const { code, redirect_uri, config_id } = await req.json();
 

@@ -1,10 +1,18 @@
 import { createClient } from 'npm:@supabase/supabase-js@2';
+import { checkRateLimit, getClientIp, rateLimitResponse } from '../_shared/rateLimit.ts';
+import { requireAdmin } from '../_shared/requireAdmin.ts';
 
 const corsHeaders = {
   'Access-Control-Allow-Origin': '*',
   'Access-Control-Allow-Methods': 'GET, POST, PUT, DELETE, OPTIONS',
   'Access-Control-Allow-Headers': 'Content-Type, Authorization, X-Client-Info, Apikey',
 };
+
+// Actions the public site itself depends on (e.g. the SEO override widget
+// that runs on every page for every visitor) - these stay open. Everything
+// else exposes internal SEO strategy or lets the caller rewrite page
+// metadata, so it requires a logged-in admin.
+const PUBLIC_ACTIONS = new Set(['get-page']);
 
 Deno.serve(async (req: Request) => {
   if (req.method === 'OPTIONS') {
@@ -21,6 +29,14 @@ Deno.serve(async (req: Request) => {
 
     const url = new URL(req.url);
     const action = url.searchParams.get('action') || 'list';
+
+    const { allowed } = await checkRateLimit(supabaseUrl, supabaseKey, getClientIp(req), 'seo-manager');
+    if (!allowed) return rateLimitResponse(corsHeaders);
+
+    if (!PUBLIC_ACTIONS.has(action)) {
+      const admin = await requireAdmin(req, supabaseUrl, supabaseKey, corsHeaders);
+      if (!admin.ok) return admin.response;
+    }
 
     if (action === 'list') {
       const { data: pages, error } = await supabase
