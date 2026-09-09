@@ -214,7 +214,7 @@ export default function ServicesPage() {
             Ready to Get Started?
           </h2>
           <p className="text-base sm:text-lg md:text-xl text-[#1C2A39] mb-8">
-            Contact Ultra Roofing today for expert roofing services in Dallas, Fort Worth, and Houston. Free inspections and instant quotes available.
+            Contact Ultra Roofing today for expert roofing services across Dallas-Fort Worth. Free inspections and instant quotes available.
           </p>
           <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
             <a

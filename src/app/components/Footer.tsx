@@ -10,7 +10,7 @@ export default function Footer() {
           {/* Brand — full width on mobile */}
           <div className="col-span-2 md:col-span-1">
             <img
-              src="/ULTRA ROOFING transparent logo.png"
+              src="/ultra-roofing-logo-transparent.png"
               alt="Ultra Roofing DFW roofing contractor"
               className="h-20 sm:h-24 mb-4 w-auto"
             />
@@ -133,6 +133,11 @@ export default function Footer() {
             </p>
             <p className="text-gray-400 text-xs sm:text-sm">
               © {new Date().getFullYear()} Ultra Roofing LLC. All rights reserved. | Licensed &amp; Insured | Dallas–Fort Worth Metroplex
+            </p>
+            <p className="text-gray-400 text-xs sm:text-sm">
+              <Link to="/privacy-policy" className="text-[#FFC107] hover:underline">Privacy Policy</Link>
+              {' '}|{' '}
+              <Link to="/sms-terms" className="text-[#FFC107] hover:underline">SMS Terms</Link>
             </p>
           </div>
         </div>

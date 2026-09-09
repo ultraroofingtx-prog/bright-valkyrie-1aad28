@@ -1,6 +1,7 @@
 import { Link } from 'react-router-dom';
 import { ArrowLeft } from 'lucide-react';
 import SEO from '../../components/SEO';
+import SchemaMarkup from '../../components/SchemaMarkup';
 
 export default function TexasHeatRoofLifespan() {
   return (
@@ -9,6 +10,17 @@ export default function TexasHeatRoofLifespan() {
         title="How Texas Summer Heat Damages Your Roof | Prepare Now | Ultra Roofing DFW"
         description="With Texas summer temperatures approaching 100°F, now is the time to prepare your roof. Learn how extreme heat and UV exposure shorten roof life in DFW and how to protect your investment."
         keywords="Texas summer heat roof damage, roof lifespan DFW summer, UV roof protection Dallas, prepare roof for summer Texas, heat resistant roofing DFW, summer roof damage prevention, roof ventilation Texas heat, energy efficient roofing Dallas"
+      />
+      <SchemaMarkup
+        type="blogPosting"
+        blogPosting={{
+          slug: 'texas-heat-impacts-roof-lifespan',
+          headline: 'How Texas Heat Impacts the Lifespan of Your Roof',
+          description: 'With Texas summer temperatures approaching 100°F, now is the time to prepare your roof. Learn how extreme heat and UV exposure shorten roof life in DFW and how to protect your investment.',
+          image: 'https://images.pexels.com/photos/186980/pexels-photo-186980.jpeg?auto=compress&cs=tinysrgb&w=1200',
+          datePublished: '2024-03-15T09:00:00-05:00',
+          author: 'Ultra Roofing Team',
+        }}
       />
 
       <article className="py-12 sm:py-16 lg:py-20 bg-white">
@@ -32,7 +44,7 @@ export default function TexasHeatRoofLifespan() {
             How Texas Heat Impacts the Lifespan of Your Roof
           </h1>
 
-          <p className="text-gray-500 mb-8">Published March 15, 2024</p>
+          <p className="text-gray-500 mb-8">Published March 15, 2024 &middot; By Ultra Roofing Team</p>
 
           <div className="prose prose-lg max-w-none">
             <p className="text-lg text-gray-700 mb-6">

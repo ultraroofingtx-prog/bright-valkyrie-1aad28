@@ -1,5 +1,6 @@
 import "jsr:@supabase/functions-js/edge-runtime.d.ts";
 import { createClient } from "npm:@supabase/supabase-js@2";
+import { checkRateLimit, getClientIp, rateLimitResponse } from "../_shared/rateLimit.ts";
 
 const corsHeaders = {
   "Access-Control-Allow-Origin": "*",
@@ -14,6 +15,7 @@ interface InspectionRequest {
   address: string;
   propertyType: string;
   message?: string;
+  smsConsent?: boolean;
 }
 
 Deno.serve(async (req: Request) => {
@@ -22,13 +24,16 @@ Deno.serve(async (req: Request) => {
   }
 
   try {
+    const supabaseUrl = Deno.env.get("SUPABASE_URL")!;
+    const serviceRoleKey = Deno.env.get("SUPABASE_SERVICE_ROLE_KEY")!;
+
+    const { allowed } = await checkRateLimit(supabaseUrl, serviceRoleKey, getClientIp(req), "send-inspection-email");
+    if (!allowed) return rateLimitResponse(corsHeaders);
+
     const data: InspectionRequest = await req.json();
 
     // Always save to database first so no lead is ever lost
-    const supabase = createClient(
-      Deno.env.get("SUPABASE_URL")!,
-      Deno.env.get("SUPABASE_SERVICE_ROLE_KEY")!
-    );
+    const supabase = createClient(supabaseUrl, serviceRoleKey);
 
     await supabase.from("contact_submissions").insert({
       name: data.name,
@@ -38,6 +43,7 @@ Deno.serve(async (req: Request) => {
       property_type: data.propertyType,
       message: data.message || "",
       status: "pending",
+      sms_consent: data.smsConsent === true,
     });
 
     // Attempt email delivery — non-fatal if it fails

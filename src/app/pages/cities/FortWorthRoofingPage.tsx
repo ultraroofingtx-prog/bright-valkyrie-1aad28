@@ -1,9 +1,34 @@
 import { Link } from 'react-router-dom';
 import { Phone, CheckCircle, ArrowRight, MapPin } from 'lucide-react';
+import SchemaMarkup from '../../components/SchemaMarkup';
+
+const faqItems = [
+  {
+    "question": "How often does hail damage roofs in Fort Worth?",
+    "answer": "Tarrant County typically sees multiple hail events each spring. Even golf-ball-size hail\n                can crack standard shingles and dent metal flashing. After any major storm, we recommend\n                a free inspection to catch damage before leaks develop."
+  },
+  {
+    "question": "What roofing materials hold up best in Fort Worth heat?",
+    "answer": "IKO Dynasty Class 3 impact-resistant shingles and standing seam metal both perform well\n                in sustained high temperatures. For flat commercial roofs, TPO single-ply membrane\n                reflects UV and keeps cooling costs lower."
+  },
+  {
+    "question": "Will you help with my insurance claim?",
+    "answer": "Yes. We document all damage with photos and measurements, provide a detailed scope of\n                work, and can meet your adjuster on-site if needed. We work with all major insurance\n                carriers in the Fort Worth area."
+  },
+  {
+    "question": "How long does a full roof replacement take?",
+    "answer": "Most residential roofs in Fort Worth are completed in one to three days depending on\n                size and complexity. Larger homes or properties requiring decking repairs may take\n                longer. We confirm the timeline before any work starts so you know what to expect\n                and can plan accordingly."
+  },
+  {
+    "question": "Do you handle commercial roofs in Fort Worth?",
+    "answer": "We do. Our commercial services include TPO membrane, R-panel metal, and rolled roofing.\n                We work on retail centers, warehouses, office buildings, and multi-family properties\n                throughout the Fort Worth metro."
+  }
+];
 
 export default function FortWorthRoofingPage() {
   return (
     <div className="bg-white">
+      <SchemaMarkup type="faq" faqItems={faqItems} />
       {/* Hero */}
       <section className="bg-[#1C2A39] text-white py-16 sm:py-20">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 text-center">
@@ -47,14 +72,11 @@ export default function FortWorthRoofingPage() {
         <div className="max-w-4xl mx-auto px-4 sm:px-6">
           <h2 className="text-2xl sm:text-3xl font-bold text-[#1C2A39] mb-6">Roofing for the Fort Worth Area</h2>
           <p className="text-gray-700 mb-4">
-            Fort Worth's weather puts roofs to the test. Spring hailstorms roll through Tarrant County'
+            Fort Worth's weather puts roofs to the test. Spring hailstorms roll through Tarrant County
             regularly, and summer heat pushes well above 100°F for weeks at a time. Both take a toll on
             standard three-tab shingles. We recommend impact-resistant products like IKO Dynasty Class 3
             shingles or standing seam metal for homeowners who want long-term performance without repeated
             repairs.
-          </p>
-          <p className="text-gray-700 mb-4">
-            We work throughout Fort Worth and surrounding neighborhoods including:
           </p>
           {/* [OWNER: fill in neighborhoods served — e.g., Westover Hills, Ridglea, TCU area, Southlake, Arlington Heights, Wedgwood, etc.] */}
           <p className="text-gray-700 mb-4">
@@ -63,7 +85,7 @@ export default function FortWorthRoofingPage() {
             single-ply membrane, R-panel metal, and rolled roofing for low-slope applications.
           </p>
           <p className="text-gray-700">
-            Fort Worth`s building codes require specific wind-uplift ratings and fastener patterns.
+            Fort Worth's building codes require specific wind-uplift ratings and fastener patterns.
             We stay current on city permit requirements so your new roof passes inspection without
             delays or re-work. If your home is in a homeowners association, we can work with HOA
             guidelines on color and material selections.

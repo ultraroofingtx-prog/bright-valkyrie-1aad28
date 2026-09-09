@@ -11,7 +11,7 @@ const BASE_BUSINESS = {
   '@type': 'RoofingContractor',
   '@id': 'https://ultraroofingtx.com/#business',
   name: 'Ultra Roofing',
-  image: 'https://ultraroofingtx.com/ULTRA%20ROOFING%20transparent%20logo.png',
+  image: 'https://ultraroofingtx.com/ultra-roofing-logo-transparent.png',
   url: 'https://ultraroofingtx.com',
   telephone: '+18333567233',
   email: 'office@ultraroofingtx.com',
@@ -35,14 +35,35 @@ const BASE_BUSINESS = {
   ],
 };
 
+interface BlogPostingProps {
+  slug: string;
+  headline: string;
+  description: string;
+  image: string;
+  datePublished: string;
+  dateModified?: string;
+  author?: string;
+}
+
 interface SchemaMarkupProps {
-  type?: 'organization' | 'service' | 'faq' | 'city';
+  type?: 'organization' | 'service' | 'faq' | 'city' | 'blogPosting';
   faqItems?: Array<{ question: string; answer: string }>;
   cityName?: string;
   citySlug?: string;
+  serviceName?: string;
+  serviceDescription?: string;
+  blogPosting?: BlogPostingProps;
 }
 
-export default function SchemaMarkup({ type = 'organization', faqItems, cityName, citySlug }: SchemaMarkupProps) {
+export default function SchemaMarkup({
+  type = 'organization',
+  faqItems,
+  cityName,
+  citySlug,
+  serviceName,
+  serviceDescription,
+  blogPosting,
+}: SchemaMarkupProps) {
   const organizationSchema = {
     ...BASE_BUSINESS,
     openingHoursSpecification: {
@@ -57,7 +78,9 @@ export default function SchemaMarkup({ type = 'organization', faqItems, cityName
   const serviceSchema = {
     '@context': 'https://schema.org',
     '@type': 'Service',
-    serviceType: 'Roofing Services',
+    serviceType: serviceName ?? 'Roofing Services',
+    name: serviceName ? `${serviceName} | Ultra Roofing` : undefined,
+    description: serviceDescription,
     provider: {
       '@type': 'RoofingContractor',
       '@id': 'https://ultraroofingtx.com/#business',
@@ -85,7 +108,7 @@ export default function SchemaMarkup({ type = 'organization', faqItems, cityName
     '@type': 'RoofingContractor',
     '@id': `https://ultraroofingtx.com/service-areas/${citySlug}/#business`,
     name: 'Ultra Roofing',
-    image: 'https://ultraroofingtx.com/ULTRA%20ROOFING%20transparent%20logo.png',
+    image: 'https://ultraroofingtx.com/ultra-roofing-logo-transparent.png',
     url: `https://ultraroofingtx.com/service-areas/${citySlug}`,
     telephone: '+18333567233',
     email: 'office@ultraroofingtx.com',
@@ -131,10 +154,30 @@ export default function SchemaMarkup({ type = 'organization', faqItems, cityName
       }
     : null;
 
+  const blogPostingSchema = blogPosting
+    ? {
+        '@context': 'https://schema.org',
+        '@type': 'BlogPosting',
+        mainEntityOfPage: { '@type': 'WebPage', '@id': `https://ultraroofingtx.com/blog/${blogPosting.slug}` },
+        headline: blogPosting.headline,
+        description: blogPosting.description,
+        image: blogPosting.image,
+        datePublished: blogPosting.datePublished,
+        dateModified: blogPosting.dateModified ?? blogPosting.datePublished,
+        author: { '@type': 'Organization', name: blogPosting.author ?? 'Ultra Roofing Team', url: 'https://ultraroofingtx.com/about' },
+        publisher: {
+          '@type': 'Organization',
+          name: 'Ultra Roofing',
+          logo: { '@type': 'ImageObject', url: 'https://ultraroofingtx.com/ultra-roofing-logo-transparent.png' },
+        },
+      }
+    : null;
+
   const getSchema = () => {
     if (type === 'faq' && faqSchema) return faqSchema;
     if (type === 'city' && citySchema) return citySchema;
     if (type === 'service') return serviceSchema;
+    if (type === 'blogPosting' && blogPostingSchema) return blogPostingSchema;
     return organizationSchema;
   };
 

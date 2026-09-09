@@ -1,6 +1,7 @@
 import { Link } from 'react-router-dom';
 import { ArrowLeft } from 'lucide-react';
 import SEO from '../../components/SEO';
+import SchemaMarkup from '../../components/SchemaMarkup';
 
 export default function BestRoofingMaterials() {
   return (
@@ -9,6 +10,17 @@ export default function BestRoofingMaterials() {
         title="Best Roofing Materials for DFW Homes | Asphalt, Metal & More | Ultra Roofing"
         description="Compare asphalt shingles, metal roofing, and impact-resistant materials built for Texas weather. Find the best roofing system for your Dallas–Fort Worth home with Ultra Roofing."
         keywords="best roofing materials DFW, asphalt shingles Dallas TX, metal roofing vs asphalt DFW, impact resistant shingles Texas, Class 4 shingles DFW, roofing systems North Texas, CertainTeed shingles Dallas, GAF shingles DFW, Owens Corning roofing Texas, roofing material comparison Dallas Fort Worth"
+      />
+      <SchemaMarkup
+        type="blogPosting"
+        blogPosting={{
+          slug: 'best-roofing-materials-dfw-homes',
+          headline: 'The Best Roofing Materials for Homes in Dallas–Fort Worth',
+          description: 'Compare asphalt shingles, metal roofing, and impact-resistant materials built for Texas weather. Find the best roofing system for your Dallas–Fort Worth home with Ultra Roofing.',
+          image: 'https://images.pexels.com/photos/221024/pexels-photo-221024.jpeg?auto=compress&cs=tinysrgb&w=1200',
+          datePublished: '2024-03-05T09:00:00-06:00',
+          author: 'Ultra Roofing Team',
+        }}
       />
 
       <article className="py-12 sm:py-16 lg:py-20 bg-white">
@@ -32,7 +44,7 @@ export default function BestRoofingMaterials() {
             The Best Roofing Materials for Homes in Dallas–Fort Worth
           </h1>
 
-          <p className="text-gray-500 mb-8">Published March 5, 2024</p>
+          <p className="text-gray-500 mb-8">Published March 5, 2024 &middot; By Ultra Roofing Team</p>
 
           <div className="prose prose-lg max-w-none">
             <p className="text-lg text-gray-700 mb-6">

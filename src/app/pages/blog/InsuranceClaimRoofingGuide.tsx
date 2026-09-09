@@ -1,6 +1,7 @@
 import { Link } from 'react-router-dom';
 import { ArrowLeft } from 'lucide-react';
 import SEO from '../../components/SEO';
+import SchemaMarkup from '../../components/SchemaMarkup';
 
 export default function InsuranceClaimRoofingGuide() {
   return (
@@ -9,6 +10,17 @@ export default function InsuranceClaimRoofingGuide() {
         title="How to File a Roof Insurance Claim in Texas | Step-by-Step Guide | Ultra Roofing"
         description="Texas homeowners: learn exactly how to file a roof insurance claim after hail or wind damage. Ultra Roofing walks you through every step and works directly with your adjuster."
         keywords="roof insurance claim Texas, how to file roof claim DFW, hail damage insurance claim Dallas, roof claim process Fort Worth, insurance adjuster roof inspection Texas, denied roof claim help DFW"
+      />
+      <SchemaMarkup
+        type="blogPosting"
+        blogPosting={{
+          slug: 'how-to-file-roof-insurance-claim-texas',
+          headline: 'How to File a Roof Insurance Claim in Texas: A Step-by-Step Guide',
+          description: 'Texas homeowners: learn exactly how to file a roof insurance claim after hail or wind damage. Ultra Roofing walks you through every step and works directly with your adjuster.',
+          image: 'https://images.pexels.com/photos/1547813/pexels-photo-1547813.jpeg?auto=compress&cs=tinysrgb&w=1200',
+          datePublished: '2024-06-03T09:00:00-05:00',
+          author: 'Ultra Roofing Team',
+        }}
       />
 
       <article className="py-12 sm:py-16 lg:py-20 bg-white">
@@ -32,7 +44,7 @@ export default function InsuranceClaimRoofingGuide() {
             How to File a Roof Insurance Claim in Texas: A Step-by-Step Guide
           </h1>
 
-          <p className="text-gray-500 mb-8">Published May 1, 2026</p>
+          <p className="text-gray-500 mb-8">Published June 3, 2024 &middot; By Ultra Roofing Team</p>
 
           <div className="prose prose-lg max-w-none">
             <p className="text-lg text-gray-700 mb-6">

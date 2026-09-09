@@ -1,6 +1,7 @@
 import { useState, useEffect } from 'react';
 import { Search, TrendingUp, Edit2, Save, X, Calendar, BarChart3, FileText } from 'lucide-react';
 import SEO from '../components/SEO';
+import { useAdminAuth } from '../hooks/useAdminAuth';
 
 interface SEOPage {
   id: string;
@@ -48,15 +49,18 @@ export default function SEOManagerPage() {
   const [editForm, setEditForm] = useState<Partial<SEOPage>>({});
   const [activeTab, setActiveTab] = useState<'pages' | 'keywords' | 'history'>('pages');
 
+  const { session } = useAdminAuth();
   const apiUrl = `${import.meta.env.VITE_SUPABASE_URL}/functions/v1/seo-manager`;
   const headers = {
-    'Authorization': `Bearer ${import.meta.env.VITE_SUPABASE_ANON_KEY}`,
+    // Must be the logged-in admin's own session token, not the anon key -
+    // seo-manager checks this against admin_users to authorize writes.
+    'Authorization': `Bearer ${session?.access_token}`,
     'Content-Type': 'application/json',
   };
 
   useEffect(() => {
-    fetchData();
-  }, []);
+    if (session) fetchData();
+  }, [session]);
 
   const fetchData = async () => {
     try {

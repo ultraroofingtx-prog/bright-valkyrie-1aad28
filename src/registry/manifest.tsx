@@ -1,6 +1,8 @@
 // AUTO-GENERATED from the original AppRoutes.tsx — one entry per public route.
 // hydrate:true pages ship their JS (forms/tabs); all others are pure static HTML.
 import AboutPage from '../app/pages/AboutPage';
+import PrivacyPolicyPage from '../app/pages/PrivacyPolicyPage';
+import SmsTermsPage from '../app/pages/SmsTermsPage';
 import AllenPage from '../app/pages/cities/AllenPage';
 import ArlingtonPage from '../app/pages/cities/ArlingtonPage';
 import BestRoofingMaterials from '../app/pages/blog/BestRoofingMaterials';
@@ -81,6 +83,8 @@ const HYDRATED = new Set(['/', '/contact', '/maintenance']);
 export const routeEntries: RouteEntry[] = [
   { path: '/', Component: HomePage, hydrate: HYDRATED.has('/') },
   { path: '/about', Component: AboutPage, hydrate: HYDRATED.has('/about') },
+  { path: '/privacy-policy', Component: PrivacyPolicyPage, hydrate: HYDRATED.has('/privacy-policy') },
+  { path: '/sms-terms', Component: SmsTermsPage, hydrate: HYDRATED.has('/sms-terms') },
   { path: '/services', Component: ServicesPage, hydrate: HYDRATED.has('/services') },
   { path: '/maintenance', Component: MaintenancePage, hydrate: HYDRATED.has('/maintenance') },
   { path: '/team', Component: TeamPage, hydrate: HYDRATED.has('/team') },

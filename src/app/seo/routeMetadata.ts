@@ -13,15 +13,15 @@ export interface RouteMeta {
 }
 
 const SITE_URL = 'https://ultraroofingtx.com';
-const DEFAULT_OG_IMAGE = 'https://ultraroofingtx.com/ULTRA%20ROOFING%20logo%20(1).png';
+const DEFAULT_OG_IMAGE = 'https://ultraroofingtx.com/ultra-roofing-logo.png';
 
 export const routes: Record<string, RouteMeta> = {
   '/': {
-    title: 'Fort Worth Roofing Contractor | Ultra Roofing',
-    description: 'Fort Worth roofing contractor for residential & commercial roofs. Free drone inspections, insurance claim help, shingle, metal & TPO experts. Call today.',
+    title: 'Roofing Contractor Dallas Fort Worth | Roof Repair & Replacement | Ultra Roofing',
+    description: "Ultra Roofing is a licensed, family-owned roofing company serving all of DFW. Free roof inspections, hail damage repair, and insurance claim assistance. Call now for a same-day estimate.",
     keywords: 'roofing contractor Dallas Fort Worth, roofer near me DFW, roof repair Dallas, roof replacement Fort Worth, hail damage roof repair DFW, storm damage roofing Texas, licensed roofing contractor North Texas, free roof inspection Dallas, emergency roof repair DFW, residential roofing Dallas, commercial roofing Fort Worth, roof replacement cost DFW, insurance claim roofing Texas, GAF certified roofer DFW, local roofing company North Texas',
-    ogTitle: 'Fort Worth Roofing Contractor | Ultra Roofing',
-    ogDescription: 'Fort Worth roofing contractor for residential & commercial roofs. Free drone inspections, insurance claim help, shingle, metal & TPO experts. Call today.',
+    ogTitle: "DFW's Trusted Roofing Contractor | Free Inspections | Ultra Roofing",
+    ogDescription: 'Storm hit your roof? Ultra Roofing offers free same-day inspections across Dallas–Fort Worth. Expert hail damage repair, insurance claim help, and fast turnarounds.',
     ogImage: DEFAULT_OG_IMAGE,
     canonicalUrl: SITE_URL,
     schemaType: 'organization',
@@ -34,6 +34,22 @@ export const routes: Record<string, RouteMeta> = {
     ogDescription: 'Locally owned roofing company serving Fort Worth and the DFW metro. Meet the Ultra Roofing team and see how we handle repairs, replacements, and storm claims.',
     ogImage: DEFAULT_OG_IMAGE,
     canonicalUrl: `${SITE_URL}/about`,
+  },
+  '/privacy-policy': {
+    title: 'Privacy Policy | Ultra Roofing',
+    description: "How Ultra Roofing LLC collects, uses, and protects your information, including our SMS text messaging consent and opt-out practices.",
+    ogTitle: 'Privacy Policy | Ultra Roofing',
+    ogDescription: "How Ultra Roofing LLC collects, uses, and protects your information, including our SMS text messaging consent and opt-out practices.",
+    ogImage: DEFAULT_OG_IMAGE,
+    canonicalUrl: `${SITE_URL}/privacy-policy`,
+  },
+  '/sms-terms': {
+    title: 'SMS Terms & Conditions | Ultra Roofing',
+    description: "Terms for Ultra Roofing LLC's SMS text messaging program: message frequency, opt-out (STOP/HELP), and carrier disclosures.",
+    ogTitle: 'SMS Terms & Conditions | Ultra Roofing',
+    ogDescription: "Terms for Ultra Roofing LLC's SMS text messaging program: message frequency, opt-out (STOP/HELP), and carrier disclosures.",
+    ogImage: DEFAULT_OG_IMAGE,
+    canonicalUrl: `${SITE_URL}/sms-terms`,
   },
   '/services': {
     title: 'Roofing Services DFW | Residential & Commercial Roofing | Ultra Roofing',

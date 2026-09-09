@@ -1,6 +1,7 @@
 import { Link } from 'react-router-dom';
 import { ArrowLeft } from 'lucide-react';
 import SEO from '../../components/SEO';
+import SchemaMarkup from '../../components/SchemaMarkup';
 
 export default function HailstormDFW() {
   return (
@@ -9,6 +10,17 @@ export default function HailstormDFW() {
         title="What to Do After a Hailstorm in DFW | Free Roof Inspection | Ultra Roofing"
         description="Spring storm season is active across Dallas–Fort Worth. If hail hit your roof, act fast — get a free same-day inspection, document damage, and file your insurance claim with Ultra Roofing's help."
         keywords="what to do after hailstorm DFW, hail damage roof inspection Dallas, spring hail roof repair, emergency roof inspection Fort Worth, hail roof insurance claim Texas, storm damage assessment DFW, roof damage after storm Texas, hail damage roofer near me"
+      />
+      <SchemaMarkup
+        type="blogPosting"
+        blogPosting={{
+          slug: 'what-to-do-after-hailstorm-dfw',
+          headline: 'What to Do After a Hailstorm in Dallas–Fort Worth',
+          description: 'Spring storm season is active across Dallas–Fort Worth. If hail hit your roof, act fast — get a free same-day inspection, document damage, and file your insurance claim with Ultra Roofing\'s help.',
+          image: 'https://images.pexels.com/photos/1547813/pexels-photo-1547813.jpeg?auto=compress&cs=tinysrgb&w=1200',
+          datePublished: '2024-03-10T09:00:00-05:00',
+          author: 'Ultra Roofing Team',
+        }}
       />
 
       <article className="py-12 sm:py-16 lg:py-20 bg-white">
@@ -32,7 +44,7 @@ export default function HailstormDFW() {
             What to Do After a Hailstorm in Dallas–Fort Worth
           </h1>
 
-          <p className="text-gray-500 mb-8">Published March 10, 2024</p>
+          <p className="text-gray-500 mb-8">Published March 10, 2024 &middot; By Ultra Roofing Team</p>
 
           <div className="prose prose-lg max-w-none">
             <p className="text-lg text-gray-700 mb-6">

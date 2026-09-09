@@ -1,6 +1,7 @@
 import { useState, useEffect } from 'react';
 import { Calendar, Clock, Plus, CreditCard as Edit2, Trash2, Send, X, CheckCircle, AlertCircle } from 'lucide-react';
 import SEO from '../components/SEO';
+import { useAdminAuth } from '../hooks/useAdminAuth';
 
 interface ScheduledPost {
   id: string;
@@ -40,12 +41,15 @@ const BLANK_FORM: FormData = {
 };
 
 const API_BASE = `${import.meta.env.VITE_SUPABASE_URL}/functions/v1/blog-scheduler`;
-const AUTH_HEADERS = {
-  'Authorization': `Bearer ${import.meta.env.VITE_SUPABASE_ANON_KEY}`,
-  'Content-Type': 'application/json',
-};
 
 export default function BlogSchedulerPage() {
+  const { session } = useAdminAuth();
+  // Must be the logged-in admin's own session token, not the anon key -
+  // blog-scheduler checks this against admin_users to authorize writes.
+  const AUTH_HEADERS = {
+    'Authorization': `Bearer ${session?.access_token}`,
+    'Content-Type': 'application/json',
+  };
   const [posts, setPosts] = useState<ScheduledPost[]>([]);
   const [loading, setLoading] = useState(true);
   const [saving, setSaving] = useState(false);
@@ -56,8 +60,8 @@ export default function BlogSchedulerPage() {
   const [confirmDelete, setConfirmDelete] = useState<string | null>(null);
 
   useEffect(() => {
-    fetchPosts();
-  }, []);
+    if (session) fetchPosts();
+  }, [session]);
 
   useEffect(() => {
     if (toast) {

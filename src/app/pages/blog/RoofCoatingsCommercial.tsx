@@ -1,6 +1,7 @@
 import { Link } from 'react-router-dom';
 import { ArrowLeft } from 'lucide-react';
 import SEO from '../../components/SEO';
+import SchemaMarkup from '../../components/SchemaMarkup';
 
 export default function RoofCoatingsCommercial() {
   return (
@@ -9,6 +10,17 @@ export default function RoofCoatingsCommercial() {
         title="Commercial Roof Coatings DFW | Extend Flat Roof Life | Ultra Roofing"
         description="Silicone and elastomeric roof coatings can add 10–15 years to your commercial roof. Ultra Roofing applies TPO coatings, roof restoration systems, and waterproof coatings across all of Dallas–Fort Worth."
         keywords="commercial roof coating DFW, flat roof coating Dallas, TPO roof coating Fort Worth, silicone roof coating North Texas, roof restoration Dallas TX, commercial roofing repair DFW, elastomeric roof coating Texas, extend roof life DFW, commercial roofer Dallas Fort Worth, roof waterproofing Texas"
+      />
+      <SchemaMarkup
+        type="blogPosting"
+        blogPosting={{
+          slug: 'roof-coatings-commercial-roof-life',
+          headline: 'Roof Coatings: The Secret to Longer Commercial Roof Life',
+          description: 'Silicone and elastomeric roof coatings can add 10–15 years to your commercial roof. Ultra Roofing applies TPO coatings, roof restoration systems, and waterproof coatings across all of Dallas–Fort Worth.',
+          image: 'https://images.pexels.com/photos/209251/pexels-photo-209251.jpeg?auto=compress&cs=tinysrgb&w=1200',
+          datePublished: '2024-02-20T09:00:00-06:00',
+          author: 'Ultra Roofing Team',
+        }}
       />
 
       <article className="py-12 sm:py-16 lg:py-20 bg-white">
@@ -32,7 +44,7 @@ export default function RoofCoatingsCommercial() {
             Roof Coatings: The Secret to Longer Commercial Roof Life
           </h1>
 
-          <p className="text-gray-500 mb-8">Published February 20, 2024</p>
+          <p className="text-gray-500 mb-8">Published February 20, 2024 &middot; By Ultra Roofing Team</p>
 
           <div className="prose prose-lg max-w-none">
             <p className="text-lg text-gray-700 mb-6">

@@ -62,7 +62,7 @@ export default function Header() {
         <div className="flex items-center justify-between h-16 sm:h-20">
           <Link to="/" onClick={close} className="flex-shrink-0">
             <img
-              src="/ULTRA ROOFING transparent logo.png"
+              src="/ultra-roofing-logo-transparent.png"
               alt="Ultra Roofing"
               className="h-11 sm:h-16 lg:h-18 w-auto"
             />
