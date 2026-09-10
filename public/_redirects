@@ -1,0 +1,21 @@
+# Legacy URLs from earlier site platforms (GoDaddy/Wix, Bolt/React) that
+# Google still has indexed and are now 404ing. 301s preserve link equity
+# and stop repeat crawl errors during the platform transition.
+# More specific rules must stay above the wildcards they'd otherwise
+# shadow — Netlify uses first-match-wins.
+
+# Old Wix blog post URL pattern (/blog/f/<slug>). Topical match for the
+# one confirmed-indexed post; everything else under the old feed path
+# falls back to the current blog index.
+/blog/f/best-roofing-solutions-for-hot-dallas-summers  /blog/texas-heat-impacts-roof-lifespan  301
+/blog/f/*  /blog  301
+
+# Old top-level "/residential" page — no direct current equivalent, so
+# it goes to the services hub, which covers residential roofing.
+/residential  /services  301
+
+# An earlier Astro build's canonical tags pointed city pages at
+# /cities/<slug>, a route that never actually existed on this site
+# (see README.md). Redirecting defensively in case that bad canonical
+# got crawled and indexed before it was fixed.
+/cities/*  /service-areas/:splat  301
