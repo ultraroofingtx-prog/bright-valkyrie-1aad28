@@ -1,6 +1,5 @@
 import { Phone, Award, MapPin, CheckCircle, Calculator } from 'lucide-react';
 import SEO from '../components/SEO';
-import SchemaMarkup from '../components/SchemaMarkup';
 import BookingForm from '../components/BookingForm';
 import { Link } from 'react-router-dom';
 
@@ -38,7 +37,6 @@ export default function HomePage() {
         ogDescription="Storm hit your roof? Ultra Roofing offers free same-day inspections across Dallas–Fort Worth. Expert hail damage repair, insurance claim help, and fast turnarounds."
         canonicalUrl="https://ultraroofingtx.com"
       />
-      <SchemaMarkup type="organization" />
 
       {/* Hero Section */}
       <section className="relative min-h-[500px] sm:h-[600px] flex items-center justify-center text-white">
